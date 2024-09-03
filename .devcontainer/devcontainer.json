@@ -8,7 +8,8 @@
 		  "extensions": [
 			"ms-vscode.cpptools",
 			"yzhang.markdown-all-in-one",
-			"foxundermoon.shell-format"
+			"foxundermoon.shell-format",
+			"AdaCore.ada"
 		]
 		}
 	  }
