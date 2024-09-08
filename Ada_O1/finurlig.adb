@@ -83,12 +83,12 @@ begin
     Put("Skriv in ett heltal och en sträng med 5 tecken: ");
     Get(IntInput);
     Get(CharInput);
-    IntInput := 1;
-    Get_Line(StrInput, IntInput);
     Put("Du skrev in talet |");
     Put(IntInput, Width => 0);
+    IntInput := 1;
+    Get_Line(StrInput, IntInput);
     Put("| och strängen |");
-    Put(StrInput); -- todo index
+    Put(StrInput);
     Put("|.");
     New_Line(2);
     Skip_Line;
@@ -110,7 +110,7 @@ begin
     Put("Du skrev in strängen: ");
     Put(StrInput(1..IntInput));
     New_Line(2);
-    -- Skip_Line; why?
+    Skip_Line;
 
     Put("Skriv in en sträng som är maximalt 5 tecken: ");
     IntInput := 1;
