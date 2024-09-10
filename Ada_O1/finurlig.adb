@@ -1,3 +1,5 @@
+-- joewe275: Samarbetat med matol699, Mattis Olevall, samma program
+
 with Ada.Text_IO;
 with Ada.Integer_Text_IO;
 with Ada.Float_Text_IO;
@@ -49,11 +51,11 @@ begin
     Put("Skriv in ett heltal och ett flyttal: ");
     Get(IntInput);
     Put("Du skrev in heltalet: ");
-    Put(IntInput);
+    Put(IntInput, Width => 8);
     New_Line;
     Get(FloatInput);
     Put("Du skrev in flyttalet: ");
-    Put(FloatInput, Fore => 5, Aft => 4, Exp => 0);
+    Put(FloatInput, Fore => 3, Aft => 4, Exp => 0);
     New_Line(2);
     Skip_Line;
 
@@ -96,7 +98,7 @@ begin
     Put("Skriv in en sträng med 3 tecken och ett flyttal: ");
     Get(StrInput(1..3));
     Get(FloatInput);
-    Put("Du skrev in: """);
+    Put("Du skrev in """);
     Put(FloatInput, Fore => 0, Aft => 3, Exp => 0);
     Put(""" och """);
     Put(StrInput(1..3));
@@ -110,7 +112,6 @@ begin
     Put("Du skrev in strängen: ");
     Put(StrInput(1..IntInput));
     New_Line(2);
-    Skip_Line;
 
     Put("Skriv in en sträng som är maximalt 5 tecken: ");
     IntInput := 1;
