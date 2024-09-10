@@ -98,8 +98,8 @@ begin
     Put("Skriv in en sträng med 3 tecken och ett flyttal: ");
     Get(StrInput(1..3));
     Get(FloatInput);
-    Put("Du skrev in "" ");
-    Put(FloatInput, Fore => 0, Aft => 3, Exp => 0);
+    Put("Du skrev in """);
+    Put(FloatInput, Fore => 2, Aft => 3, Exp => 0);
     Put(""" och """);
     Put(StrInput(1..3));
     Put(""".");
