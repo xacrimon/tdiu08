@@ -10,8 +10,8 @@ Vad är en O-uppgift?
       för att senare kunna bli examinerad och få betyg i kursen
 
 Kan jag ÖVA på vilken uppgift som helst när som helst?
-  [ ] Ja
-  [X] Nej
+  [X] Ja
+  [ ] Nej
 
 Kan jag SKICKA IN vilken uppgift som helst till automaträttningen när som helst?
   [ ] Ja
@@ -25,7 +25,7 @@ Var hittar jag information om vilka uppgifter som ingår i kursen?
 Hur vet jag vilken/vilka uppgifter som går att "skicka in" för "bedömning"
 just nu?
   [X] Man ser på färgen på uppgifterna i kurskartan
-  [ ] När jag "hovrar" med muspekaren på uppgiftens ruta i kurskartan står det
+  [X] När jag "hovrar" med muspekaren på uppgiftens ruta i kurskartan står det
       att uppgift är "upplåst"
   [ ] Det finns ingen sådan information
 
@@ -45,30 +45,30 @@ Om du använder en dator i datorsal (ex. SU10), vilka programvaror används för
 koppla den datorn mot LiUs system?
   [ ] ThinLinc
   [ ] VPN (Forticlient)
-  [ ] 2-stegsautentisering
+  [X] 2-stegsautentisering
 
 Om din personliga dator är ansluten till eduroam-nätverket på campus Valla, vilka
 programvaror används för att koppla din dator mot LiUs system?
   [X] ThinLinc
   [ ] VPN (Forticlient)
-  [ ] 2-stegsautentisering
+  [X] 2-stegsautentisering
 
 Om din personliga dator inte är ansluten till eduroam-nätverket på campus Valla,
 vilka programvaror används för att koppla din dator mot LiUs system?
   [X] ThinLinc
   [X] VPN (Forticlient)
-  [ ] 2-stegsautentisering
+  [X] 2-stegsautentisering
 
 Ibland kan du behöva kontakta någon för att få hjälp i och utanför kursen. 
 Sätt respektive rolls siffra vid rätt påstående:
-  1. Examinator         [ ] Kontaktas vid frågor om utebliven LADOK-rapportering
-  2. Kursledare         [ ] Kontaktas vid frågor om strul med SC och kurskarta
-  3. Kursassistent      [ ] Kontaktas vid frågor om problem med assistent
-  4. Kursadministratör  [ ] Kontaktas vid frågor om programmering och rättning
-  5. Din assistent      [ ] Kontaktas vid frågor om förlängd tid under P-pass
-  6. Helpdesk           [ ] Kontaktas vid frågor om ThinLinc, VPN och
+  1. Examinator         [4] Kontaktas vid frågor om utebliven LADOK-rapportering
+  2. Kursledare         [2] Kontaktas vid frågor om strul med SC och kurskarta
+  3. Kursassistent      [1] Kontaktas vid frågor om problem med assistent
+  4. Kursadministratör  [5] Kontaktas vid frågor om programmering och rättning
+  5. Din assistent      [2] Kontaktas vid frågor om förlängd tid under P-pass
+  6. Helpdesk           [6] Kontaktas vid frågor om ThinLinc, VPN och
                             2-stegsautentisering
-                        [ ] Kontaktas vid frågor om diverse saker
+                        [5] Kontaktas vid frågor om diverse saker
 
 [X] Jag har läst och förstått att kopiering eller användande av andras program
     kan leda till disciplinnämndsärende och att det i kursen är meningen att
