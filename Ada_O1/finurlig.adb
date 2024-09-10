@@ -99,8 +99,8 @@ begin
     Get(StrInput(1..3));
     Get(FloatInput);
     Put("Du skrev in """);
-    Put(FloatInput, Fore => 0, Aft => 3, Exp => 0);
-    Put(""" och "" ");
+    Put(FloatInput, Fore => 1, Aft => 3, Exp => 0);
+    Put(""" och """);
     Put(StrInput(1..3));
     Put(""".");
     New_Line(2);
