@@ -51,7 +51,7 @@ begin
     Put("Skriv in ett heltal och ett flyttal: ");
     Get(IntInput);
     Put("Du skrev in heltalet: ");
-    Put(IntInput, Width => 8);
+    Put(IntInput, Width => 9);
     New_Line;
     Get(FloatInput);
     Put("Du skrev in flyttalet: ");
@@ -100,7 +100,7 @@ begin
     Get(FloatInput);
     Put("Du skrev in """);
     Put(FloatInput, Fore => 0, Aft => 3, Exp => 0);
-    Put(""" och """);
+    Put(""" och "" ");
     Put(StrInput(1..3));
     Put(""".");
     New_Line(2);
