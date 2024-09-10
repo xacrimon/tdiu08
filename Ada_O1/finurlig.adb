@@ -54,8 +54,8 @@ begin
     Put(IntInput, Width => 9);
     New_Line;
     Get(FloatInput);
-    Put("Du skrev in flyttalet: ");
-    Put(FloatInput, Fore => 3, Aft => 4, Exp => 0);
+    Put("Du skrev in flyttalet:");
+    Put(FloatInput, Fore => 4, Aft => 4, Exp => 0);
     New_Line(2);
     Skip_Line;
 
