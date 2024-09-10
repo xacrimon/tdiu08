@@ -44,7 +44,7 @@ begin
     Put("Skriv in ett flyttal: ");
     Get(FloatInput);
     Put("Du skrev in flyttalet: ");
-    Put(FloatInput, Aft => 3, Exp => 0);
+    Put(FloatInput, Fore => 1, Aft => 3, Exp => 0);
     New_Line(2);
     Skip_Line;
 
