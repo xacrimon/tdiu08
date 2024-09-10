@@ -112,6 +112,9 @@ begin
     Put("Du skrev in strängen: ");
     Put(StrInput(1..IntInput));
     New_Line(2);
+    if IntInput >= 5 then
+        Skip_Line;
+    end if;
 
     Put("Skriv in en sträng som är maximalt 5 tecken: ");
     IntInput := 1;
