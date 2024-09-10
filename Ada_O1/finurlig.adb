@@ -95,7 +95,7 @@ begin
     New_Line(2);
     Skip_Line;
 
-    Put("Skriv in en sträng med 3 tecken och ett flyttal: ");
+    Put("Skriv in en sträng med 3 tecken och ett flyttal: ");
     Get(StrInput(1..3));
     Get(FloatInput);
     Put("Du skrev in "" ");
