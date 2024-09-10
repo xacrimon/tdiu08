@@ -67,16 +67,14 @@ begin
     Skip_Line;
 
     Put("Skriv in en sträng med 5 tecken: ");
-    IntInput := 1;
-    Get_Line(StrInput, IntInput);
+    Get(StrInput);
     Put("Du skrev in strängen: ");
     Put(StrInput(1..5));
     New_Line(2);
     Skip_Line;
 
     Put("Skriv in en sträng med 3 tecken: ");
-    IntInput := 1;
-    Get_Line(StrInput, IntInput);
+    Get(StrInput);
     Put("Du skrev in strängen: ");
     Put(StrInput(1..3));
     New_Line(2);
@@ -87,8 +85,7 @@ begin
     Get(CharInput);
     Put("Du skrev in talet |");
     Put(IntInput, Width => 0);
-    IntInput := 1;
-    Get_Line(StrInput, IntInput);
+    Get(StrInput);
     Put("| och strängen |");
     Put(StrInput);
     Put("|.");
