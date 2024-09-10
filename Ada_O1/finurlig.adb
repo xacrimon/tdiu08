@@ -74,11 +74,11 @@ begin
     Skip_Line;
 
     Put("Skriv in en sträng med 3 tecken: ");
-    Get(StrInput);
+    Get(StrInput(1..3));
     Put("Du skrev in strängen: ");
     Put(StrInput(1..3));
     New_Line(2);
-    -- Skip_Line; why?
+    Skip_Line;
 
     Put("Skriv in ett heltal och en sträng med 5 tecken: ");
     Get(IntInput);
