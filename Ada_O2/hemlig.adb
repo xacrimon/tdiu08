@@ -49,9 +49,17 @@ begin
         end if;
     end loop;
 
-    Put("Momsprocent: ");
-    Get(VATPercentage);
-    Skip_Line;
+    loop 
+        Put("Momsprocent: ");
+        Get(VATPercentage);
+        Skip_Line;
+
+        if VATPercentage < 0.0 or VATPercentage > 100.0 then
+            Put_Line(Error);
+        else
+            exit;
+        end if;
+    end loop;
 
     New_Line;
     Put_Line("============ Momstabell ============");
