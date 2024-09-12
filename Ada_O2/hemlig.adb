@@ -42,7 +42,7 @@ begin
         Get(Step);
         Skip_Line;
 
-        if Step < 0.0 then
+        if not (Step > 0.0) then
             Put_Line(Error);
         else
             exit;
