@@ -11,6 +11,7 @@ procedure Hemlig is
     LastPrice : Float;
     Step : Float;
     VATPercentage : Float;
+    Error : String := "Felaktigt värde!";
 begin
     loop 
         Put("Första pris: ");
@@ -18,7 +19,7 @@ begin
         Skip_Line;
 
         if FirstPrice < 0.0 then
-            Put_Line("Felaktigt värde!");
+            Put_Line(Error);
         else
             exit;
         end if;
@@ -30,7 +31,7 @@ begin
         Skip_Line;
 
         if LastPrice < FirstPrice then
-            Put_Line("Felaktigt värde!");
+            Put_Line(Error);
         else
             exit;
         end if;
@@ -42,7 +43,7 @@ begin
         Skip_Line;
 
         if Step < 0.0 then
-            Put_Line("Felaktigt värde!");
+            Put_Line(Error);
         else
             exit;
         end if;
