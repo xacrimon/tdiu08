@@ -1,10 +1,8 @@
--- joewe275: Samarbetat med matol699, Mattis Olevall, samma program
 -- matol699: Samarbetat med joewe275, Joel Wejdenstål, samma program 
+-- joewe275: Samarbetat med matol699, Mattis Olevall, samma program
 
-with Ada.Text_IO;
-with Ada.Float_Text_IO;
-use Ada.Text_IO;
-use Ada.Float_Text_IO;
+with Ada.Text_IO;       use Ada.Text_IO;
+with Ada.Float_Text_IO; use Ada.Float_Text_IO;
 
 procedure Hemlig is
     CurrentPrice : Float;
@@ -19,7 +17,7 @@ begin
         Get(FirstPrice);
         Skip_Line;
 
-        exit when FirstPrice > 0.0;
+        exit when FirstPrice >= 0.0;
         
         Put_Line(Error);
     end loop;
@@ -29,7 +27,7 @@ begin
         Get(LastPrice);
         Skip_Line;
 
-        exit when LastPrice > FirstPrice;
+        exit when LastPrice >= FirstPrice;
 
         Put_Line(Error);
     end loop;
@@ -49,7 +47,7 @@ begin
         Get(VATPercentage);
         Skip_Line;
 
-        exit when VATPercentage > 0.0 or VATPercentage < 100.0;
+        exit when VATPercentage >= 0.0 and VATPercentage <= 100.0;
 
         Put_Line(Error);
     end loop;
