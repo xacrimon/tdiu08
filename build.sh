@@ -1,4 +1,5 @@
 #!/bin/sh
 
-mkdir -p build/$1
-gnatmake -o build/$1/bin $1/$2.adb
+mkdir -p build/$1/obj
+gnatmake -D build/$1/obj -o build/$1/$2 $1/$2.adb
+./build/$1/$2
