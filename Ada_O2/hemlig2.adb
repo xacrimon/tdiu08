@@ -36,9 +36,7 @@ begin
         Put("Steg: ");
         Get(Step);
         Skip_Line;
-
         exit when Step > 0.0;
-
         Put_Line(Error);
     end loop;
 
