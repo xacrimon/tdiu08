@@ -1,33 +1,33 @@
 -- matol699: Samarbetat med joewe275, Joel Wejdenstål, samma program 
--- joewe275: Samarbetat med matol699, Mattis Olevall, samma program
 
 with Ada.Text_IO;       use Ada.Text_IO;
 with Ada.Float_Text_IO; use Ada.Float_Text_IO;
 
 procedure Hemlig is
-    CurrentPrice : Float;
-    FirstPrice : Float;
-    LastPrice : Float;
+    Current_Price : Float;
+    First_Price : Float;
+    Last_Price : Float;
     Step : Float;
-    VATPercentage : Float;
+    VAT_Percentage : Float;
     Error : String := "Felaktigt värde!";
+    Last_Index : Integer;
 begin
     loop 
         Put("Första pris: ");
-        Get(FirstPrice);
+        Get(First_Price);
         Skip_Line;
 
-        exit when FirstPrice >= 0.0;
+        exit when First_Price >= 0.0;
         
         Put_Line(Error);
     end loop;
 
     loop 
         Put("Sista pris: ");
-        Get(LastPrice);
+        Get(Last_Price);
         Skip_Line;
 
-        exit when LastPrice >= FirstPrice;
+        exit when Last_Price >= First_Price;
 
         Put_Line(Error);
     end loop;
@@ -36,16 +36,18 @@ begin
         Put("Steg: ");
         Get(Step);
         Skip_Line;
+
         exit when Step > 0.0;
+        
         Put_Line(Error);
     end loop;
 
     loop 
         Put("Momsprocent: ");
-        Get(VATPercentage);
+        Get(VAT_Percentage);
         Skip_Line;
 
-        exit when VATPercentage >= 0.0 and VATPercentage <= 100.0;
+        exit when VAT_Percentage >= 0.0 and VAT_Percentage <= 100.0;
 
         Put_Line(Error);
     end loop;
@@ -53,12 +55,15 @@ begin
     New_Line;
     Put_Line("============ Momstabell ============");
     Put_Line("Pris utan moms  Moms   Pris med moms");
-    CurrentPrice := FirstPrice;
-    while CurrentPrice <= LastPrice + 0.01 loop
-        Put(CurrentPrice, Fore => 6, Aft => 2, Exp => 0);
-        Put(CurrentPrice * 0.01 * VATPercentage, Fore => 8, Aft => 2, Exp => 0);
-        Put(CurrentPrice + CurrentPrice * 0.01 * VATPercentage, Fore => 9, Aft => 2, Exp => 0);
+
+    Last_Index := Integer(Float'Floor((Last_Price - First_Price) / Step));
+
+    for i in 0 .. Last_Index loop
+        Current_Price := First_Price + Float(i) * Step;
+        Put(Current_Price, Fore => 6, Aft => 2, Exp => 0);
+        Put(Current_Price * 0.01 * VAT_Percentage, Fore => 8, Aft => 2, Exp => 0);
+        Put(Current_Price + Current_Price * 0.01 * VAT_Percentage, Fore => 9, Aft => 2, Exp => 0);
         New_Line;
-        CurrentPrice := CurrentPrice + Step;
     end loop;
+
 end Hemlig;
