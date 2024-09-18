@@ -1,9 +1,9 @@
--- joewe275: Samarbetat med matol699, Mattis Olevall, samma program
+-- matol699: Samarbetat med joewe275, Joel Wejdenstål, samma program
 
-with Ada.Text_IO; use Ada.Text_IO;
-with Ada.Integer_Text_IO; use Ada.Integer_Text_IO;
-with Ada.Float_Text_IO; use Ada.Float_Text_IO;
-with Ada.Numerics; use Ada.Numerics;
+with Ada.Text_IO;                       use Ada.Text_IO;
+with Ada.Integer_Text_IO;               use Ada.Integer_Text_IO;
+with Ada.Float_Text_IO;                 use Ada.Float_Text_IO;
+with Ada.Numerics;                      use Ada.Numerics;
 with Ada.Numerics.Elementary_Functions; use Ada.Numerics.Elementary_Functions;
 
 procedure Calculator is
@@ -104,7 +104,7 @@ procedure Calculator is
 
     function Calculate_Factorial (N : Integer) return Integer is
     begin
-        if N = 1 then
+        if N = 0 or N = 1 then
             return 1;
         end if;
 
