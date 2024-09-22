@@ -9,9 +9,9 @@ with Ada.Numerics.Elementary_Functions; use Ada.Numerics.Elementary_Functions;
 procedure Calculator is
     Selection : Integer;
     
-    function Calculate_Hypothenuse (A, B : Integer) return Float;
-    function Calculate_Factorial (N : Integer) return Integer;
-    procedure Calculate_Angles (Hc, Sa : Float; Va, Vb, Vc : out Float);
+    function Calculate_Hypothenuse (A, B : in Integer) return Float;
+    function Calculate_Factorial (N : in Integer) return Integer;
+    procedure Calculate_Angles (Hc, Sa : in Float; Va, Vb, Vc : out Float);
 
     procedure Menu_Selection (Selection : out Integer) is
     begin
@@ -86,14 +86,14 @@ procedure Calculator is
         New_Line;
     end Factorial_Program;
 
-    procedure Calculate_Angles (Hc, Sa : Float; Va, Vb, Vc : out Float) is
+    procedure Calculate_Angles (Hc, Sa : in Float; Va, Vb, Vc : out Float) is
     begin 
         Vb := arccos(Sa / Hc) * 180.0 / Pi;
         Va := 90.0 - Vb;
         Vc := 90.0;
     end Calculate_Angles;
 
-    function Calculate_Hypothenuse (A, B : Integer) return Float is
+    function Calculate_Hypothenuse (A, B : in Integer) return Float is
         Af, Bf : Float; 
     begin
         Af := Float(A);
@@ -102,7 +102,7 @@ procedure Calculator is
         return Sqrt(Af**2 + Bf**2);
     end Calculate_Hypothenuse;
 
-    function Calculate_Factorial (N : Integer) return Integer is
+    function Calculate_Factorial (N : in Integer) return Integer is
     begin
         if N = 0 or N = 1 then
             return 1;
