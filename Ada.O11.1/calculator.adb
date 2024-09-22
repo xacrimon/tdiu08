@@ -103,12 +103,15 @@ procedure Calculator is
     end Calculate_Hypothenuse;
 
     function Calculate_Factorial (N : in Integer) return Integer is
+        Product : Integer;
     begin
-        if N = 0 or N = 1 then
-            return 1;
-        end if;
+        Product := 1;
 
-        return N * Calculate_Factorial(N - 1);
+        for I in 1..N loop
+            Product := Product * I;
+        end loop;
+
+        return Product;
     end Calculate_Factorial;
 
 begin
@@ -121,7 +124,6 @@ begin
             when 1  => Hypothenuse_Program;
             when 2  => Angle_Program;
             when 3  => Factorial_Program;
-            when 4  => exit;
             when others => exit;
         end case;
 
