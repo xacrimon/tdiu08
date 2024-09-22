@@ -43,7 +43,7 @@ procedure Calculator is
         Get(B);
         Skip_Line;
         Put("Hypotenusan är ");
-        Put(Calculate_Hypothenuse(A, B), 0, 2, 0);
+        Put(Calculate_Hypothenuse(A, B), Fore => 0, Aft => 2, Exp => 0);
         New_Line;
     end Hypothenuse_Program;
 
@@ -59,17 +59,17 @@ procedure Calculator is
 
         Calculate_Angles(Hc, Sa, Va, Vb, Vc);
         Put("Va: ");
-        Put(Va, 0, 1, 0);
+        Put(Va, Fore => 0, Aft => 1, Exp => 0);
         Put(" grader");
         New_Line;
 
         Put("Vb: ");
-        Put(Vb, 0, 1, 0);
+        Put(Vb, Fore => 0, Aft => 1, Exp => 0);
         Put(" grader");
         New_Line;
 
         Put("Vc: ");
-        Put(Vc, 0, 1, 0);
+        Put(Vc, Fore => 0, Aft => 1, Exp => 0);
         Put(" grader");
         New_Line;
     end Angle_Program;
@@ -80,9 +80,9 @@ procedure Calculator is
         Put("Mata in N: ");
         Get(I);
         Skip_Line;
-        Put(I, 0);
+        Put(I, Width => 0);
         Put("-fakultet = ");
-        Put(Calculate_Factorial(I), 0);
+        Put(Calculate_Factorial(I), Width => 0);
         New_Line;
     end Factorial_Program;
 
