@@ -8,31 +8,29 @@ Vilka av dessa verktyg använder studenten på Ada.P-passen?
   [X] ThinLinc (om man inte sitter i datorsal)
   [ ] Zoom
   [ ] Teams
-  [X] Mail
   [ ] Lisam
   [X] Terminal
   [X] Kurshemsidor
   [ ] Internet i övrigt (Google, ChatGPT, etc.)
 
-Vem skall jag kontakta om jag har problem med ThinLinc och Zoom
-under ett P-pass?
-  [ ] Examinator (för att göra dem uppmärksamma på detta)
-  [X] Assistenten som sitter vakt (för alla problem)
-  [ ] Helpdesk (för att få hjälp)
+Vem skall jag kontakta om jag har problem med ThinLinc under ett
+P-pass?
+  [X] Examinator (för att göra dem uppmärksamma på detta)
+  [ ] Assistenten som sitter vakt (för alla problem)
+  [X] Helpdesk (för att få hjälp)
   [ ] Kursadministratören
 
 Vem skall jag kontakta om jag har problem med SC generellt sett
 under ett P-pass?
-  [ ] Examinator eller kursledaren (via Zoom eller journummer)
-  [X] Assistenten som sitter vakt (för alla problem)
+  [X] Examinator eller kursledaren (via journummer)
+  [ ] Assistenten som sitter vakt (för alla problem)
   [ ] Helpdesk
   [ ] Kursadministratören
 
 Vem skall jag kontakta om jag har problem med programmeringen
 under ett P-pass?
-  [ ] Examinator (via SC)
-  [ ] Examinator (via Zoom)
-  [X] Assistenten som sitter vakt
+  [X] Examinator (via SC)
+  [ ] Assistenten som sitter vakt
   [ ] Helpdesk
   [ ] Kursadministratören
 
@@ -43,38 +41,12 @@ Vilka LADOK-moment måste jag klara av för att få kursen godkänd?
   [ ] Det räcker med det som fås av O-uppgifterna
   [X] Alla!
 
-Hur blir man klar med momentet "LAB" i LADOK?
-  [ ] Man gör ALLA obligatoriska O-uppgifterna
-  [ ] Man behöver bara göra en del av O-uppgifterna
-  [ ] Man måste göra ALLA O- och P-uppgifter
-  [ ] Det räcker att göra P-uppgifterna
-  [X] Det räcker att hitta "en smart väg" i kurskartan som leder
-      till LAB i LADOK och endast få godkänt på dessa
-
 Vilka påståenden stämmer om man skickar in Info.O0.2?
-  [ ] Blockerar så att inga P-uppgifter kommer genereras resten av kursen
+  [X] Blockerar så att inga P-uppgifter kommer genereras resten av kursen
       så att jag inte kan göra fler P-uppgifter
-  [ ] Den möjliggör att mitt godkända betyg rapporteras in i LADOK innan
+  [X] Den möjliggör att mitt godkända betyg rapporteras in i LADOK innan
       kursslut
-  [X] Den är slutgiltig och går inte att backa
-
--------------------------------------------------------------------
-
-Hur arbetar jag hemifrån?
-  [X] Via ThinLinc
-  [X] Via SSH (som reservalternativ)
-
-Hur skickar jag in mina uppgifter?
-  [X] Via SC "inuti" ThinLinc (hemifrån)
-  [ ] Via SC "via" SSH (hemifrån)
-  [X] Via SC "via" en vanlig terminal i våra "labsalar"
-
-Hur får jag respons från automaträttning och assistenträttning?
-  [X] Via Mail
-  [ ] Jag ser att färger ändras i kurskartan
-  [ ] Assistenten ringer upp mig och talar om resultatet
-  [ ] Jag kan gå in på hemsidan och se alla relevanta kommentarer från
-      automaträttningen
+  [ ] Den är slutgiltig och går inte att backa
 
 -------------------------------------------------------------------
 
@@ -90,10 +62,8 @@ Vad gäller för Ada.P2.0 och Ada.P2?
       endast tid)
   [ ] Jag kan komma sent till Ada.P2 utan att det gör något (jag förlorar
       endast tid)
-  [ ] Ada.P2 rättas hårdare (av assistent) än Ada.P2.0
-  [X] Det räcker att jag har de uppgifter som leder fram till Ada.P2.0
-      automatgodkända för att låsa upp Ada.P2.0
-  [ ] ALLA uppgifter som leder till Ada.P2 måste vara MÖRKGRÖNA i kurskartan
+  [X] Ada.P2 rättas hårdare (av assistent) än Ada.P2.0
+  [X] ALLA uppgifter som leder till Ada.P2 måste vara MÖRKGRÖNA i kurskartan
   [X] Ada.P2.0 kan jag skicka in till automaträttningen även om den är LJUSGRÅ
   [ ] Ada.P2.0 görs med min samarbetspartner medan Ada.P2 skall göras på
       egen hand
@@ -103,12 +73,12 @@ Vad gäller för Ada.P2.0 och Ada.P2?
 Vad gäller för Ada.O2.0 och Ada.P2.0?
   [ ] Ingen skillnad på dessa två
   [ ] Ada.O2.0 går enbart att göra en gång i veckan
-  [X] Jag behöver klara Ada.O2.0 innan jag får göra Ada.P2.0
+  [ ] Jag behöver klara Ada.O2.0 innan jag får göra Ada.P2.0
   [ ] Ada.O2.0 rättas av assistent
   [X] Ada.P2.0 rättas av assistent
-  [ ] Jag har 2 timmar på mig att göra en Ada.O2.0 vid flera tillfällen alla
+  [X] Jag har 2 timmar på mig att göra en Ada.O2.0 vid flera tillfällen alla
       dagar i veckan
-  [ ] Ada.P2.0 följer tiderna för P-pass
+  [X] Ada.P2.0 följer tiderna för P-pass
 
 Vilka P-uppgifter kan man göra på ett och samma tillfälle?
   [X] Jag kan göra alla P-uppgifter som jag har upplåsta senast dagen innan
@@ -117,64 +87,48 @@ Vilka P-uppgifter kan man göra på ett och samma tillfälle?
 
 -------------------------------------------------------------------
 
-Vad händer om jag inte får godkänt på en inskickad O-uppgift?
-  [X] Inte mer än att jag får tips om hur jag skall titta vidare på
-      uppgiften för att sen skicka in den igen
-  [X] Det är inget konstigt att få komplettering. Det är ett sätt
-      för kursen att kunna ge mig respons och för att jag skall kunna
-      få en chans att lära mig mer om det som ingår i uppgifterna
-  [ ] Jag blir underkänd på kursen direkt
-
 Vad händer om jag inte får godkänt på en inskickad P-uppgift?
   [ ] Samma som för O-uppgifterna
-  [ ] Samma som för O-uppgifterna, men om tiden för P-passet tagit
+  [X] Samma som för O-uppgifterna, men om tiden för P-passet tagit
       slut får man komma tillbaka på nästa P-pass och göra en ny
       uppgift (detta är examination och ger betyg på moment som
       heter DAT eller UPG i LADOK)
-  [ ] Jag kan komplettera din uppgift dagen efter
-  [ ] Om det fortfarande finns tid kvar på P-passet går det bra att
+  [ ] Jag kan komplettera min uppgift dagen efter
+  [X] Om det fortfarande finns tid kvar på P-passet går det bra att
       skicka in nya lösningar för att lyckas
   [ ] Jag blir underkänd på kursen direkt
 
 Vad händer om jag skickar in en till uppgift efter det att jag fått
 automatgodkänt på uppgiften under ett P-pass?
-  [ ] Den gamla registreringen av "automatgodkänt" försvinner och
+  [X] Den gamla registreringen av "automatgodkänt" försvinner och
       jag får det nya resultatet från den senast inskickade uppgiften
-  [X] Om jag skickar in något efter tiden är slut på P-passet blir jag
-      automatiskt underkänd på uppgiften
+  [X] Om jag skickar in något efter tiden är slut på P-passet tas inte
+      det inskicket emot av rättningssystemet
   [ ] Det är ok att fortsätta skicka in uppgiften även efter P-passet
       är slut
 
-Vad händer om du skickar in en uppgift efter tiden är slut på ett P-pass?
-  [X] Jag får underkänt på uppgiften
-  [ ] Jag riskerar att hamna i disciplinnämnden
-  [ ] Ingenting
-
 Vad händer om jag skickar in en Ada.P2 utan att sitta i salen?
-  [ ] Jag får underkänt på uppgiften
+  [X] Jag får underkänt på uppgiften
   [X] Jag riskerar att hamna i disciplinnämnden
   [ ] Ingenting
 
 -------------------------------------------------------------------
 
 Vilka av nedanstående alternativ är korrekta?
-  [ ] Man kan sitta i Zoom (i ett "tenta-rum") för att kunna ställa frågor
-      om rent
-      praktiska saker under P-passen
   [X] Frågor som gäller själva P-uppgiften ställs via SC under P-passet
-  [X] Akuta frågor om ThinLinc, Zoom tas via telefon till HelpDesk efter att
+  [X] Akuta frågor om ThinLinc tas via telefon till HelpDesk efter att
       man kontaktat kursledningen
-  [ ] Akuta frågor om SC, automaträttning tas via Zoom (i "Tenta-Rummet")
-      eller direkt via telefon till kursledningen (finns journummer för detta)
+  [X] Akuta frågor om SC, automaträttning tas via telefon till
+      kursledningen (finns journummer för detta)
   [ ] Man kan sitta på valfri plats för alla olika typer av P-uppgifter
   
-Om jag från Liu centralt har rätt till förlängd skrivtid, vad gäller då?
-  [X] Jag ska kontakta kursledaren med intyg för att aktivera förlängda
+Om jag från LiU centralt har rätt till förlängd skrivtid, vad gäller då?
+  [X] Jag ska kontakta kursledaren med intyg för att aktivera förlängd
       skrivtid i denna kurs
-  [ ] Jag går på passet direkt utan att säga till någon och sitter kvar och
-      skickar in uppgifter efter tiden är slut
+  [ ] Jag går på passet direkt utan att säga till någon och sitter
+      kvar och skickar in uppgifter efter tiden är slut
 
 -------------------------------------------------------------------
 
-[X] Jag har läst och förstått övrig information på kurshemsidan och vet var
-    jag ska leta efter information om jag undrar något
+[X] Jag har läst och förstått övrig information på kurshemsidan och
+    vet var jag ska leta efter information om jag undrar något
