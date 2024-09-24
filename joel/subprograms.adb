@@ -8,35 +8,38 @@ with Ada.Numerics.Elementary_Functions; use Ada.Numerics.Elementary_Functions;
 
 procedure Subprograms is
     function ComputeAverage(
-        D1, D2, D3: Integer
+        D1, D2, D3: in Integer
     ) return Integer is
+        Sum, FloatAvg : Float;
     begin
-        return Integer (Float'Ceiling ((Float(D1) + Float(D2) + Float(D3)) / 3.0));
+        Sum := Float(D1) + Float(D2) + Float(D3);
+        FloatAvg := Sum / 3.0;
+        return Integer (Float'Ceiling (FloatAvg));
     end ComputeAverage;
 
-    function "+" (A    : String;
-                 B : Character)
-                 return Integer
-   is
-   begin
-      return Integer'Value(A) - Integer'Value((1 => B));
-   end "+";
+    function "+" (
+        A : in String;
+        B : in Character
+    ) return Integer is
+    begin
+        return Integer(Float'Value(A) - Float'Value((1 => B)));
+    end "+";
 
     procedure ComputeProduct(
-        ReadInt : out Integer;
-        ReadFloat : out Float;
+        FactorOne : out Integer;
+        FactorTwo : out Float;
         Product: out Integer
     ) is
-        C : Character;
+        ReadChar : Character;
         FloatProduct : Float;
     begin
         Put("Mata in ett tecken: ");
-        Get(C);
+        Get(ReadChar);
         Put("Mata in ett flyttal: ");
-        Get(ReadFloat);
+        Get(FactorTwo);
 
-        ReadInt := Integer'Value((1 => C));
-        FloatProduct := ReadFloat * Float(ReadInt);
+        FactorOne := Integer'Value((1 => ReadChar));
+        FloatProduct := Float(FactorOne) * FactorTwo;
         if FloatProduct > 0.0 then
             Product := Integer(Float'Ceiling(FloatProduct));
         else
@@ -44,32 +47,31 @@ procedure Subprograms is
         end if;
     end ComputeProduct;
 
-    D1, D2, D3, Average, ReadInt, Product: Integer;
+    Int1, Int2, Int3, Average, ReadInt, Product, Difference: Integer;
     ReadFloat: Float;
-    S: String(1..3);
-    C: Character;
-    Diff: Integer;
+    ReadString: String(1..3);
+    ReadChar: Character;
 begin
     Put("Mata in tre heltal: ");
-    Get(D1);
-    Get(D2);
-    Get(D3);
-    Average := ComputeAverage(D1, D2, D3);
+    Get(Int1);
+    Get(Int2);
+    Get(Int3);
+    Average := ComputeAverage(Int1, Int2, Int3);
     Put("Medelvärdet av dessa är: ");
     Put(Average, Width => 0);
     New_Line(2);
 
     Put("Mata in en sträng: ");
-    Get(S);
+    Get(ReadString);
     Put("Mata in ett tecken: ");
-    Get(C);
-    Diff := S + C;
+    Get(ReadChar);
+    Difference := ReadString + ReadChar;
     Put("Den beräknade differensen mellan ");
-    Put(S);
+    Put(ReadString);
     Put(" och ");
-    Put(C);
+    Put(ReadChar);
     Put(" blir ");
-    Put(Diff, Width => 0);
+    Put(Difference, Width => 0);
     New_Line(2);
 
     ComputeProduct(ReadInt, ReadFloat, Product);
