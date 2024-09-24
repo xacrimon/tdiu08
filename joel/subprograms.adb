@@ -55,7 +55,7 @@ begin
     Get(D2);
     Get(D3);
     Average := ComputeAverage(D1, D2, D3);
-    Put("Medelvärdet är: ");
+    Put("Medelvärdet av dessa är: ");
     Put(Average, Width => 0);
     New_Line(2);
 
