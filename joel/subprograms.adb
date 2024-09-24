@@ -57,7 +57,7 @@ begin
     Average := ComputeAverage(D1, D2, D3);
     Put("Medelvärdet är: ");
     Put(Average, Width => 0);
-    New_Line;
+    New_Line(2);
 
     Put("Mata in en sträng: ");
     Get(S);
@@ -70,7 +70,7 @@ begin
     Put(C);
     Put(" blir ");
     Put(Diff, Width => 0);
-    New_Line;
+    New_Line(2);
 
     ComputeProduct(ReadInt, ReadFloat, Product);
     Put("Du matade in tecknet: ");
