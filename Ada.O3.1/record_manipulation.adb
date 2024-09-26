@@ -1,10 +1,7 @@
 -- joewe275: Samarbetat med matol699, Mattis Olevall, samma program
 
 with Ada.Text_IO;                       use Ada.Text_IO;
-with Ada.Integer_Text_IO;               use Ada.Integer_Text_IO;
 with Ada.Float_Text_IO;                 use Ada.Float_Text_IO;
-with Ada.Numerics;                      use Ada.Numerics;
-with Ada.Numerics.Elementary_Functions; use Ada.Numerics.Elementary_Functions;
 
 procedure Record_Manipulation is
     GetPreprint : String := "Mata in datamängd: ";
