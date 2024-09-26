@@ -7,7 +7,7 @@ procedure Record_Manipulation is
     GetPreprint : String := "Mata in datamängd: ";
     PutPreprint : String := "Inmatad datamängd: ";
 
-    procedure EatSeparator is
+    procedure Eat_Separator is
         NoSpaceFound : exception;
         Scratch : Character;
     begin
@@ -15,12 +15,12 @@ procedure Record_Manipulation is
         if Scratch /= ' ' then
             raise NoSpaceFound;
         end if;
-    end EatSeparator;
+    end Eat_Separator;
 
-    procedure WriteSeparator is
+    procedure Write_Separator is
     begin
         Put(" ");
-    end WriteSeparator;
+    end Write_Separator;
 
     procedure Get(Data : out Boolean) is
         InvalidBoolean : exception;
@@ -53,14 +53,14 @@ procedure Record_Manipulation is
     procedure Get(Data : out DS1) is
     begin
         Get(Data.W);
-        EatSeparator;
+        Eat_Separator;
         Get(Data.P);
     end Get;
 
     procedure Put(Data : in DS1) is
     begin
         Put(Data.W);
-        WriteSeparator;
+        Write_Separator;
         Put(Data.P);
     end Put;
 
@@ -72,14 +72,14 @@ procedure Record_Manipulation is
     procedure Get(Data : out DS2_U) is
     begin
         Get(Data.S);
-        EatSeparator;
+        Eat_Separator;
         Get(Data.Z);
     end Get;
 
     procedure Put(Data : in DS2_U) is
     begin
         Put(Data.S, Fore => 0, Aft => 3, Exp => 0);
-        WriteSeparator;
+        Write_Separator;
         Put(Data.Z);
     end Put;
 
@@ -91,14 +91,14 @@ procedure Record_Manipulation is
     procedure Get(Data : out DS2) is
     begin
         Get(Data.D);
-        EatSeparator;
+        Eat_Separator;
         Get(Data.U);
     end Get;
 
     procedure Put(Data : in DS2) is
     begin
         Put(Data.D);
-        WriteSeparator;
+        Write_Separator;
         Put(Data.U);
     end Put;
 
@@ -110,14 +110,14 @@ procedure Record_Manipulation is
     procedure Get(Data : out DS3_U1) is
     begin
         Get(Data.Y);
-        EatSeparator;
+        Eat_Separator;
         Get(Data.Q);
     end Get;
 
     procedure Put(Data : in DS3_U1) is
     begin
         Put(Data.Y);
-        WriteSeparator;
+        Write_Separator;
         Put(Data.Q);
     end Put;
 
@@ -129,14 +129,14 @@ procedure Record_Manipulation is
     procedure Get(Data : out DS3_U2) is
     begin
         Get(Data.T);
-        EatSeparator;
+        Eat_Separator;
         Get(Data.L);
     end Get;
 
     procedure Put(Data : in DS3_U2) is
     begin
         Put(Data.T);
-        WriteSeparator;
+        Write_Separator;
         Put(Data.L);
     end Put;
 
@@ -149,18 +149,18 @@ procedure Record_Manipulation is
     procedure Get(Data : out DS3) is
     begin
         Get(Data.J);
-        EatSeparator;
+        Eat_Separator;
         Get(Data.B);
-        EatSeparator;
+        Eat_Separator;
         Get(Data.O);
     end Get;
 
     procedure Put(Data : in DS3) is
     begin
         Put(Data.J);
-        WriteSeparator;
+        Write_Separator;
         Put(Data.B);
-        WriteSeparator;
+        Write_Separator;
         Put(Data.O);
     end Put;
 
