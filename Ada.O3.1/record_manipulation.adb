@@ -6,7 +6,32 @@ with Ada.Float_Text_IO;                 use Ada.Float_Text_IO;
 with Ada.Numerics;                      use Ada.Numerics;
 with Ada.Numerics.Elementary_Functions; use Ada.Numerics.Elementary_Functions;
 
+-- TODO: bool get/put
+
 procedure Record_Manipulation is
+    GetPreprint : String := "Mata in datamängd: ";
+    PutPreprint : String := "Inmatad datamängd: ";
+
+    procedure Get(Data : out Boolean) is
+        Scratch : Character;
+    begin
+        Get(Scratch);
+        if Scratch = 'T' then
+            Data := True;
+        else
+            Data := False;
+        end if;
+    end Get;
+
+    procedure Put(Data : in Boolean) is
+    begin
+        if Data then
+            Put("True");
+        else
+            Put("False");
+        end if;
+    end Put;
+
     type DS1 is record
         W : Character;
         P : String(1..4);
@@ -15,8 +40,6 @@ procedure Record_Manipulation is
     procedure Get(Data : out DS1) is
         Scratch : Character;
     begin
-        Put_Line("För DS1:");
-        Put("Mata in datamängd: ");
         Get(Data.W);
         Get(Scratch);
         Get(Data.P);
@@ -25,7 +48,6 @@ procedure Record_Manipulation is
 
     procedure Put(Data : in DS1) is
     begin
-        Put("Inmatad datamängd: ");
         Put(Data.W);
         Put(" ");
         Put(Data.P);
@@ -44,8 +66,6 @@ procedure Record_Manipulation is
     procedure Get(Data : out DS2) is
         Scratch : Character;
     begin
-        Put_Line("För DS2:");
-        Put("Mata in datamängd: ");
         Get(Data.D.S);
         Get(Scratch);
         Get(Data.D.Z);
@@ -57,7 +77,6 @@ procedure Record_Manipulation is
 
     procedure Put(Data : in DS2) is
     begin
-        Put("Inmatad datamängd: ");
         Put(Data.D.S, Fore => 0, Aft => 3, Exp => 0);
         Put(" ");
         Put(Data.D.Z);
@@ -86,8 +105,6 @@ procedure Record_Manipulation is
     procedure Get(Data : out DS3) is
         Scratch : Character;
     begin
-        Put_Line("För DS3:");
-        Put("Mata in datamängd: ");
         Get(Data.J.Y);
         Get(Scratch);
         Get(Data.J.Q);
@@ -96,14 +113,7 @@ procedure Record_Manipulation is
         Get(Scratch);
         Get(Data.B.Q);
         Get(Scratch);
-
-        Get(Scratch);
-        if Scratch = 'T' then
-            Data.O.T := True;
-        else
-            Data.O.T := False;
-        end if;
-
+        Get(Data.O.T);
         Get(Scratch);
         Get(Data.O.L);
         Skip_Line;
@@ -111,7 +121,6 @@ procedure Record_Manipulation is
 
     procedure Put(Data : in DS3) is
     begin
-        Put("Inmatad datamängd: ");
         Put(Data.J.Y);
         Put(" ");
         Put(Data.J.Q);
@@ -120,13 +129,7 @@ procedure Record_Manipulation is
         Put(" ");
         Put(Data.B.Q);
         Put(" ");
-
-        if Data.O.T then
-            Put("True");
-        else
-            Put("False");
-        end if;
-
+        Put(Data.O.T);
         Put(" ");
         Put(Data.O.L);
     end Put;
@@ -135,13 +138,27 @@ procedure Record_Manipulation is
     Data_Two : DS2;
     Data_Three : DS3;
 begin
+    Put_Line("För DS1:");
+    Put(GetPreprint);
     Get(Data_One);
+
+    Put(PutPreprint);
     Put(Data_One);
     New_Line(2);
+
+    Put_Line("För DS2:");
+    Put(GetPreprint);
     Get(Data_Two);
+
+    Put(PutPreprint);
     Put(Data_Two);
     New_Line(2);
+
+    Put_Line("För DS3:");
+    Put(GetPreprint);
     Get(Data_Three);
+
+    Put(PutPreprint);
     Put(Data_Three);
     New_Line(1);
 end Record_Manipulation;
