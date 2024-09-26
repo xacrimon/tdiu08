@@ -12,15 +12,33 @@ procedure Record_Manipulation is
     GetPreprint : String := "Mata in datamängd: ";
     PutPreprint : String := "Inmatad datamängd: ";
 
-    procedure Get(Data : out Boolean) is
+    procedure EatSeparator is
+        NoSpaceFound : exception;
         Scratch : Character;
     begin
         Get(Scratch);
-        if Scratch = 'T' then
-            Data := True;
-        else
-            Data := False;
+        if Scratch /= ' ' then
+            raise NoSpaceFound;
         end if;
+    end EatSeparator;
+
+    procedure WriteSeparator is
+    begin
+        Put(" ");
+    end WriteSeparator;
+
+    procedure Get(Data : out Boolean) is
+        InvalidBoolean : exception;
+        Scratch : Character;
+    begin
+        Get(Scratch);
+        case Scratch is
+        when 'T' =>
+            Data := True;
+        when 'F' =>
+            Data := False;
+        when others => raise InvalidBoolean;
+        end case;
     end Get;
 
     procedure Put(Data : in Boolean) is
@@ -38,17 +56,16 @@ procedure Record_Manipulation is
     end record;
 
     procedure Get(Data : out DS1) is
-        Scratch : Character;
     begin
         Get(Data.W);
-        Get(Scratch);
+        EatSeparator;
         Get(Data.P);
     end Get;
 
     procedure Put(Data : in DS1) is
     begin
         Put(Data.W);
-        Put(" ");
+        WriteSeparator;
         Put(Data.P);
     end Put;
 
@@ -63,24 +80,23 @@ procedure Record_Manipulation is
     end record;
 
     procedure Get(Data : out DS2) is
-        Scratch : Character;
     begin
         Get(Data.D.S);
-        Get(Scratch);
+        EatSeparator;
         Get(Data.D.Z);
         Get(Data.U.S);
-        Get(Scratch);
+        EatSeparator;
         Get(Data.U.Z);
     end Get;
 
     procedure Put(Data : in DS2) is
     begin
         Put(Data.D.S, Fore => 0, Aft => 3, Exp => 0);
-        Put(" ");
+        WriteSeparator;
         Put(Data.D.Z);
-        Put(" ");
+        WriteSeparator;
         Put(Data.U.S, Fore => 0, Aft => 3, Exp => 0);
-        Put(" ");
+        WriteSeparator;
         Put(Data.U.Z);
     end Put;
 
@@ -101,33 +117,32 @@ procedure Record_Manipulation is
     end record;
 
     procedure Get(Data : out DS3) is
-        Scratch : Character;
     begin
         Get(Data.J.Y);
-        Get(Scratch);
+        EatSeparator;
         Get(Data.J.Q);
-        Get(Scratch);
+        EatSeparator;
         Get(Data.B.Y);
-        Get(Scratch);
+        EatSeparator;
         Get(Data.B.Q);
-        Get(Scratch);
+        EatSeparator;
         Get(Data.O.T);
-        Get(Scratch);
+        EatSeparator;
         Get(Data.O.L);
     end Get;
 
     procedure Put(Data : in DS3) is
     begin
         Put(Data.J.Y);
-        Put(" ");
+        WriteSeparator;
         Put(Data.J.Q);
-        Put(" ");
+        WriteSeparator;
         Put(Data.B.Y);
-        Put(" ");
+        WriteSeparator;
         Put(Data.B.Q);
-        Put(" ");
+        WriteSeparator;
         Put(Data.O.T);
-        Put(" ");
+        WriteSeparator;
         Put(Data.O.L);
     end Put;
 
