@@ -6,8 +6,6 @@ with Ada.Float_Text_IO;                 use Ada.Float_Text_IO;
 with Ada.Numerics;                      use Ada.Numerics;
 with Ada.Numerics.Elementary_Functions; use Ada.Numerics.Elementary_Functions;
 
--- TODO: bool get/put
-
 procedure Record_Manipulation is
     GetPreprint : String := "Mata in datamängd: ";
     PutPreprint : String := "Inmatad datamängd: ";
@@ -74,6 +72,20 @@ procedure Record_Manipulation is
         Z : String(1..4);
     end record;
 
+    procedure Get(Data : out DS2_U) is
+    begin
+        Get(Data.S);
+        EatSeparator;
+        Get(Data.Z);
+    end Get;
+
+    procedure Put(Data : in DS2_U) is
+    begin
+        Put(Data.S, Fore => 0, Aft => 3, Exp => 0);
+        WriteSeparator;
+        Put(Data.Z);
+    end Put;
+
     type DS2 is record
         D : DS2_U;
         U : DS2_U;
@@ -81,23 +93,16 @@ procedure Record_Manipulation is
 
     procedure Get(Data : out DS2) is
     begin
-        Get(Data.D.S);
+        Get(Data.D);
         EatSeparator;
-        Get(Data.D.Z);
-        Get(Data.U.S);
-        EatSeparator;
-        Get(Data.U.Z);
+        Get(Data.U);
     end Get;
 
     procedure Put(Data : in DS2) is
     begin
-        Put(Data.D.S, Fore => 0, Aft => 3, Exp => 0);
+        Put(Data.D);
         WriteSeparator;
-        Put(Data.D.Z);
-        WriteSeparator;
-        Put(Data.U.S, Fore => 0, Aft => 3, Exp => 0);
-        WriteSeparator;
-        Put(Data.U.Z);
+        Put(Data.U);
     end Put;
 
     type DS3_U1 is record
@@ -105,10 +110,38 @@ procedure Record_Manipulation is
         Q : Character;
     end record;
 
+    procedure Get(Data : out DS3_U1) is
+    begin
+        Get(Data.Y);
+        EatSeparator;
+        Get(Data.Q);
+    end Get;
+
+    procedure Put(Data : in DS3_U1) is
+    begin
+        Put(Data.Y);
+        WriteSeparator;
+        Put(Data.Q);
+    end Put;
+
     type DS3_U2 is record
         T : Boolean;
         L : Character;
     end record;
+
+    procedure Get(Data : out DS3_U2) is
+    begin
+        Get(Data.T);
+        EatSeparator;
+        Get(Data.L);
+    end Get;
+
+    procedure Put(Data : in DS3_U2) is
+    begin
+        Put(Data.T);
+        WriteSeparator;
+        Put(Data.L);
+    end Put;
 
     type DS3 is record
         J : DS3_U1;
@@ -118,32 +151,20 @@ procedure Record_Manipulation is
 
     procedure Get(Data : out DS3) is
     begin
-        Get(Data.J.Y);
+        Get(Data.J);
         EatSeparator;
-        Get(Data.J.Q);
+        Get(Data.B);
         EatSeparator;
-        Get(Data.B.Y);
-        EatSeparator;
-        Get(Data.B.Q);
-        EatSeparator;
-        Get(Data.O.T);
-        EatSeparator;
-        Get(Data.O.L);
+        Get(Data.O);
     end Get;
 
     procedure Put(Data : in DS3) is
     begin
-        Put(Data.J.Y);
+        Put(Data.J);
         WriteSeparator;
-        Put(Data.J.Q);
+        Put(Data.B);
         WriteSeparator;
-        Put(Data.B.Y);
-        WriteSeparator;
-        Put(Data.B.Q);
-        WriteSeparator;
-        Put(Data.O.T);
-        WriteSeparator;
-        Put(Data.O.L);
+        Put(Data.O);
     end Put;
 
     Data_One : DS1;
