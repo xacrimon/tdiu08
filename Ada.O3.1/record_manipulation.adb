@@ -43,7 +43,6 @@ procedure Record_Manipulation is
         Get(Data.W);
         Get(Scratch);
         Get(Data.P);
-        Skip_Line;
     end Get;
 
     procedure Put(Data : in DS1) is
@@ -72,7 +71,6 @@ procedure Record_Manipulation is
         Get(Data.U.S);
         Get(Scratch);
         Get(Data.U.Z);
-        Skip_Line;
     end Get;
 
     procedure Put(Data : in DS2) is
@@ -116,7 +114,6 @@ procedure Record_Manipulation is
         Get(Data.O.T);
         Get(Scratch);
         Get(Data.O.L);
-        Skip_Line;
     end Get;
 
     procedure Put(Data : in DS3) is
@@ -141,6 +138,7 @@ begin
     Put_Line("För DS1:");
     Put(GetPreprint);
     Get(Data_One);
+    Skip_Line;
 
     Put(PutPreprint);
     Put(Data_One);
@@ -149,6 +147,7 @@ begin
     Put_Line("För DS2:");
     Put(GetPreprint);
     Get(Data_Two);
+    Skip_Line;
 
     Put(PutPreprint);
     Put(Data_Two);
@@ -157,6 +156,7 @@ begin
     Put_Line("För DS3:");
     Put(GetPreprint);
     Get(Data_Three);
+    Skip_Line;
 
     Put(PutPreprint);
     Put(Data_Three);
