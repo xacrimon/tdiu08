@@ -12,6 +12,16 @@ procedure RecordManipulation is
         P : String(1..80);
     end record;
 
+    procedure GetOne is
+    begin
+        Put_Line("Hello, world!");
+    end GetOne;
+
+    procedure PutOne is
+    begin
+        Put_Line("Hello, world!");
+    end PutOne;
+
     type DS2_U is record
         S : Float;
         Z : String(1..80);
@@ -21,6 +31,16 @@ procedure RecordManipulation is
         D : DS2_U;
         U : DS2_U;
     end record;
+
+    procedure GetTwo is
+    begin
+        Put_Line("Hello, world!");
+    end GetTwo;
+
+    procedure PutTwo is
+    begin
+        Put_Line("Hello, world!");
+    end PutTwo;
 
     type DS3_U1 is record
         Y : Character;
@@ -37,26 +57,6 @@ procedure RecordManipulation is
         B : DS3_U1;
         O : DS3_U2;
     end record;
-
-    procedure GetOne is
-    begin
-        Put_Line("Hello, world!");
-    end GetOne;
-
-    procedure PutOne is
-    begin
-        Put_Line("Hello, world!");
-    end PutOne;
-
-    procedure GetTwo is
-    begin
-        Put_Line("Hello, world!");
-    end GetTwo;
-
-    procedure PutTwo is
-    begin
-        Put_Line("Hello, world!");
-    end PutTwo;
 
     procedure GetThree is
     begin
