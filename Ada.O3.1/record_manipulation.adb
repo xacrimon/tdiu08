@@ -1,20 +1,47 @@
--- joewe275: Samarbetat med matol699, Mattis Olevall, samma program
+-- matol699: Samarbetat med joewe275, Joel Wejdenstål, samma program
 
 with Ada.Text_IO;       use Ada.Text_IO;
 with Ada.Float_Text_IO; use Ada.Float_Text_IO;
 
 procedure Record_Manipulation is
-    Get_Preprint : String := "Mata in datamängd: ";
-    Put_Preprint : String := "Inmatad datamängd: ";
+    Get_Preprint : constant String := "Mata in datamängd: ";
+    Put_Preprint : constant String := "Inmatad datamängd: ";
+
+    type DS1 is record
+        W : Character;
+        P : String (1 .. 4);
+    end record;
+
+    type DS2_U is record
+        S : Float;
+        Z : String (1 .. 4);
+    end record;
+
+    type DS2 is record
+        D : DS2_U;
+        U : DS2_U;
+    end record;
+
+    type DS3_U1 is record
+        Y : Character;
+        Q : Character;
+    end record;
+
+    type DS3_U2 is record
+        T : Boolean;
+        L : Character;
+    end record;
+
+    type DS3 is record
+        J : DS3_U1;
+        B : DS3_U1;
+        O : DS3_U2;
+    end record;
 
     procedure Eat_Separator is
-        No_Space_Found : exception;
         Scratch : Character;
     begin
         Get (Scratch);
-        if Scratch /= ' ' then
-            raise No_Space_Found;
-        end if;
     end Eat_Separator;
 
     procedure Write_Separator is
@@ -23,7 +50,6 @@ procedure Record_Manipulation is
     end Write_Separator;
 
     procedure Get (Data : out Boolean) is
-        Invalid_Boolean : exception;
         Scratch : Character;
     begin
         Get (Scratch);
@@ -33,7 +59,7 @@ procedure Record_Manipulation is
             when 'F' =>
                 Data := False;
             when others =>
-                raise Invalid_Boolean;
+                null;
         end case;
     end Get;
 
@@ -45,11 +71,6 @@ procedure Record_Manipulation is
             Put ("False");
         end if;
     end Put;
-
-    type DS1 is record
-        W : Character;
-        P : String (1 .. 4);
-    end record;
 
     procedure Get (Data : out DS1) is
     begin
@@ -65,11 +86,6 @@ procedure Record_Manipulation is
         Put (Data.P);
     end Put;
 
-    type DS2_U is record
-        S : Float;
-        Z : String (1 .. 4);
-    end record;
-
     procedure Get (Data : out DS2_U) is
     begin
         Get (Data.S);
@@ -83,11 +99,6 @@ procedure Record_Manipulation is
         Write_Separator;
         Put (Data.Z);
     end Put;
-
-    type DS2 is record
-        D : DS2_U;
-        U : DS2_U;
-    end record;
 
     procedure Get (Data : out DS2) is
     begin
@@ -103,11 +114,6 @@ procedure Record_Manipulation is
         Put (Data.U);
     end Put;
 
-    type DS3_U1 is record
-        Y : Character;
-        Q : Character;
-    end record;
-
     procedure Get (Data : out DS3_U1) is
     begin
         Get (Data.Y);
@@ -122,11 +128,6 @@ procedure Record_Manipulation is
         Put (Data.Q);
     end Put;
 
-    type DS3_U2 is record
-        T : Boolean;
-        L : Character;
-    end record;
-
     procedure Get (Data : out DS3_U2) is
     begin
         Get (Data.T);
@@ -140,12 +141,6 @@ procedure Record_Manipulation is
         Write_Separator;
         Put (Data.L);
     end Put;
-
-    type DS3 is record
-        J : DS3_U1;
-        B : DS3_U1;
-        O : DS3_U2;
-    end record;
 
     procedure Get (Data : out DS3) is
     begin
