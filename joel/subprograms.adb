@@ -46,39 +46,6 @@ procedure Subprograms is
             Product := Integer(Float'Floor(FloatProduct));
         end if;
     end ComputeProduct;
-
-    Int1, Int2, Int3, Average, ReadInt, Product, Difference: Integer;
-    ReadFloat: Float;
-    ReadString: String(1..3);
-    ReadChar: Character;
 begin
-    Put("Mata in tre heltal: ");
-    Get(Int1);
-    Get(Int2);
-    Get(Int3);
-    Average := ComputeAverage(Int1, Int2, Int3);
-    Put("Medelvärdet av dessa är: ");
-    Put(Average, Width => 0);
-    New_Line(2);
-
-    Put("Mata in en sträng: ");
-    Get(ReadString);
-    Put("Mata in ett tecken: ");
-    Get(ReadChar);
-    Difference := ReadString + ReadChar;
-    Put("Den beräknade differensen mellan ");
-    Put(ReadString);
-    Put(" och ");
-    Put(ReadChar);
-    Put(" blir ");
-    Put(Difference, Width => 0);
-    New_Line(2);
-
-    ComputeProduct(ReadInt, ReadFloat, Product);
-    Put("Du matade in tecknet: ");
-    Put(ReadInt, Width => 0);
-    Put(" och flyttalet: ");
-    Put(ReadFloat, Fore => 0, Aft => 0, Exp => 0);
-    Put(" och produkten blev ");
-    Put(Product);
+    Put_Line("Hello, World!");
 end Subprograms;
