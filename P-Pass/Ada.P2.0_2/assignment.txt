@@ -1,0 +1,119 @@
+======================================================================
+              Ada.P2.0 - Underprogram och problemlösning
+======================================================================
+Skapa ett program som löser följande 3 deluppgifter i samma program!
+
+Ditt program skall sen fungera som körexemplet visar.
+Krav för uppgiften finns på hemsidan.
+
+======================================================================
+
+Deluppgift 1:
+-------------
+Skriv ett underprogram som har två eller tre parametrar.
+
+Den första parametern är ett flyttal och den andra är ett flyttal.
+
+Underprogrammet skall läsa in dessa två värden från tangentbordet och sedan
+skicka tillbaka dessa värden till huvudprogrammet. Alla ledtexter som behövs
+för inläsningen skall skrivas ut i underprogrammet.
+
+Dessutom skall underprogrammet beräkna summan av dessa (de två tal som finns i
+de första två parametrarna) och skicka tillbaka resultatet (i flyttalsform
+avrundat till närmaste heltal uppåt) till huvudprogrammet.
+
+Vi antar att det som användaren matar in innehåller värden som går att tolka
+som tal, oavsett datatyp vi matar in data till, eller att de åtministone går
+att omvandla till tal.
+
+OBS! Övriga generella krav finns på hemsidan.
+
+
+
+Deluppgift 2:
+-------------
+Skapa ett underprogram som från huvudprogrammet tar in ett tecken och en sträng
+med exakt 3 tecken och skickar tillbaka differensen mellan dessa. Resultatet
+skall skickas i heltalsform avrundat uppåt.
+
+Vi antar att parametrarna oavsett datatyp innehåller värden som går att tolka
+som tal eller att de åtministone går att omvandla till tal.
+
+OBS! Övriga generella krav finns på hemsidan.
+
+
+
+Deluppgift 3:
+-------------
+Skriv ett underprogram som från huvudprogrammet tar in en sträng med exakt 3
+tecken (endast en parameter i parameterlistan). Denna parameter fås från
+huvudprogrammet och motsvarar sidan (S) av en kvadrat.
+
+Underprogrammet skall sedan beräkna arean av kvadraten och skicka tillbaka
+resultatet till huvudprogrammet i heltalsform avrundat uppåt.
+
+Formeln som används för beräkning av area: S * S
+
+Vi antar att parametrarna oavsett datatyp innehåller värden som går att tolka
+som tal eller att de åtministone går att omvandla till tal.
+
+OBS! Övriga generella krav finns på hemsidan.
+
+
+
+======================================================================
+
+Körexempel 1:
+-------------
+Mata in ett flyttal: -21.8
+Mata in ett flyttal: -21.8
+Du matade in flyttalet: -21.8 och flyttalet: -21.8 och summan blev -4.30000E+01
+
+Mata in ett tecken: 2
+Mata in en sträng: 120
+Den beräknade differensen mellan 2 och 120 blir -118
+
+Mata in längden: 120
+Den beräknade arean blev: 14400
+
+
+Körexempel 2:
+-------------
+Mata in ett flyttal: -21.8
+Mata in ett flyttal: 421.3
+Du matade in flyttalet: -21.8 och flyttalet: 421.3 och summan blev  4.00000E+02
+
+Mata in ett tecken: 2
+Mata in en sträng: -67
+Den beräknade differensen mellan 2 och -67 blir 69
+
+Mata in längden:  67
+Den beräknade arean blev: 4489
+
+
+Körexempel 3:
+-------------
+Mata in ett flyttal: 421.3
+Mata in ett flyttal: -21.8
+Du matade in flyttalet: 421.3 och flyttalet: -21.8 och summan blev  4.00000E+02
+
+Mata in ett tecken: 6
+Mata in en sträng: 120
+Den beräknade differensen mellan 6 och 120 blir -114
+
+Mata in längden:   1
+Den beräknade arean blev: 1
+
+
+Körexempel 4:
+-------------
+Mata in ett flyttal: 421.3
+Mata in ett flyttal: 421.3
+Du matade in flyttalet: 421.3 och flyttalet: 421.3 och summan blev  8.43000E+02
+
+Mata in ett tecken: 6
+Mata in en sträng: -67
+Den beräknade differensen mellan 6 och -67 blir 73
+
+Mata in längden: 120
+Den beräknade arean blev: 14400
