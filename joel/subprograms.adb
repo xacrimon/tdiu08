@@ -11,7 +11,7 @@ procedure Subprograms is
     function "-" (Lhs : in String;
                   Rhs : in Integer) return Integer is
     begin
-        return Integer'Value(Lhs) - Rhs;
+        return Integer(Float'Value(Lhs)) - Rhs;
     end "-";
 
     -- Deluppgift 2.
