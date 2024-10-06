@@ -36,6 +36,7 @@ procedure Test_Exceptions is
         loop
 	        Put("Mata in N: ");
 	        Get(N);
+            Skip_Line;
 	        exit when N in 1 .. 4;	 
 	        Put_Line("Felaktigt N, mata in igen!");
         end loop;
@@ -201,7 +202,7 @@ procedure Test_Exceptions is
             Parse_Date(Item, Date_String);
             Validate_Date(Item);
         exception
-            when Length_Error | DATA_ERROR =>
+            when Length_Error | Constraint_Error =>
                 raise Format_Error;
         end;
     end Get;
@@ -227,9 +228,22 @@ procedure Test_Exceptions is
     procedure Upg3 is
         Date : Date_Type;
     begin      
-        Put("Mata in ett datum: ");
-        Get(Date);
-        Skip_Line;
+        loop
+            begin
+                Put("Mata in ett datum: ");
+                Get(Date);
+                exit;
+            exception
+                when Format_Error =>
+                    Put("Felaktigt format! ");
+                when Year_Error =>
+                    Put("Felaktigt år! ");
+                when Month_Error =>
+                    Put("Felaktig månad! ");
+                when Day_Error =>
+                    Put("Felaktig dag! ");
+            end;
+        end loop;
 
         Put("Du matade in ");
         Put(Date);
