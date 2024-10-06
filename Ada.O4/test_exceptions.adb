@@ -2,6 +2,8 @@ with Ada.Text_IO;         use Ada.Text_IO;
 with Ada.Integer_Text_IO; use Ada.Integer_Text_IO;
 
 procedure Test_Exceptions is
+    -- Length_Error kastas om en inmatad sträng är för kort.
+    Length_Error : exception;
 
     ----------------------------------------------------------------------
     -- Underprogram för att skriva ut meny och hantera menyval          --
@@ -86,8 +88,20 @@ procedure Test_Exceptions is
     end Upg1;
 
     procedure Get_Correct_String(S : out String) is
+        I : Integer := 1;
     begin
-        Put("TODO");
+        while I <= S'Length loop
+            Get_Immediate(S(I));
+            Put(S(I));
+
+            if not (I = 1 and (S(I) = ' ' or S(I) = ASCII.LF)) then
+                if S(I) = ASCII.LF then
+                    raise Length_Error;
+                end if;
+
+                I := I + 1;
+            end if;
+        end loop;
     end Get_Correct_String;
 
     ----------------------------------------------------------------------
@@ -181,4 +195,8 @@ begin
 	        exit;
         end if;      
     end loop;
+
+    exception
+        when Length_Error =>
+            Put_Line("För få inmatade tecken!");
 end Test_Exceptions;
