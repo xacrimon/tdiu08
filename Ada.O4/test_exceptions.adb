@@ -28,6 +28,12 @@ procedure Test_Exceptions is
         return N;
     end Menu_Selection;
 
+    procedure Get_Safe(Value : out Integer;
+                       Min, Max : in Integer) is
+    begin
+        Put("TODO");
+    end Get_Safe;
+
     ----------------------------------------------------------------------
     -- Underprogram för menyval 1: "felhantering av heltalsinmatning"   --
     --                                                                  --
@@ -52,6 +58,11 @@ procedure Test_Exceptions is
         Put_Line(".");      
     end Upg1;
 
+    procedure Get_Correct_String(S : out String) is
+    begin
+        Put("TODO");
+    end Get_Correct_String;
+
     ----------------------------------------------------------------------
     -- Underprogram för menyval 2: "felhantering av stränginmatning"    --
     --                                                                  --
@@ -74,6 +85,22 @@ procedure Test_Exceptions is
 
         Put_Line("Du matade in strängen " & S & ".");      
     end Upg2;
+
+    type Date_Type is record
+        Day   : Integer range 1 .. 31;
+        Month : Integer range 1 .. 12;
+        Year  : Integer range 1532 .. 9000;
+    end record;
+
+    procedure Get(Date : out Date_Type) is
+    begin
+        Put("TODO");
+    end Get;
+
+    procedure Put(Date : in Date_Type) is
+    begin
+        Put("TODO");
+    end Put;
 
     ----------------------------------------------------------------------
     -- Underprogram för menyval 3: "felhantering av datuminmatning"     --
