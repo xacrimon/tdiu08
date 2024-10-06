@@ -151,6 +151,33 @@ procedure Test_Exceptions is
         Item.Day := Integer'Value(S(9 .. 10));
     end Parse_Date;
 
+    function Days_In_Month(Month, Year : in Integer) return Integer is
+        Days : constant array(1 .. 12) of Integer := (31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31);
+        February : constant Integer := 2;
+        February_Leap_Days : constant Integer := 29;
+    begin
+        if Month = February and ((Year mod 4 = 0 and Year mod 100 /= 0) or Year mod 400 = 0) then
+            return February_Leap_Days;
+        else
+            return Days(Month);
+        end if;
+    end Days_In_Month;
+
+    procedure Validate_Date(Item : in Date_Type) is
+    begin
+        if Item.Year < 1532 or Item.Year > 9000 then
+            raise Year_Error;
+        end if;
+
+        if Item.Month < 1 or Item.Month > 12 then
+            raise Month_Error;
+        end if;
+
+        if Item.Day < 1 or Item.Day > Days_In_Month(Item.Month, Item.Year) then
+            raise Day_Error;
+        end if;
+    end Validate_Date;
+
     function Zero_Pad(Value, Length : in Integer) return String is
         S : String(1 .. Length+1);
     begin
@@ -172,6 +199,7 @@ procedure Test_Exceptions is
             Get_Correct_String(Date_String);
             Skip_Line;
             Parse_Date(Item, Date_String);
+            Validate_Date(Item);
         exception
             when Length_Error | DATA_ERROR =>
                 raise Format_Error;
