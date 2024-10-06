@@ -181,7 +181,7 @@ procedure Test_Exceptions is
     function Zero_Pad (Value, Length : in Integer) return String is
         Data : String := Integer'Image (Value);
     begin
-        return Tail (Data (2 .. Data'Last), Length, '0');
+        return Tail (Data(2 .. Data'Last), Length, '0');
     end Zero_Pad;
 
     procedure Get (Item : out Date_Type) is
