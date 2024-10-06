@@ -28,10 +28,37 @@ procedure Test_Exceptions is
         return N;
     end Menu_Selection;
 
+    procedure Print_Get_Safe_Lead(Min, Max : in Integer) is
+    begin
+        Put("Mata in värde (");
+        Put(Min, Width => 0);
+        Put(" - ");
+        Put(Max, Width => 0);
+        Put("): ");
+    end Print_Get_Safe_Lead;
+
     procedure Get_Safe(Value : out Integer;
                        Min, Max : in Integer) is
     begin
-        Put("TODO");
+        loop
+            Print_Get_Safe_Lead(Min, Max);
+
+            begin
+                Get(Value);
+
+                if Value < Min then
+                    Put("För litet värde. ");
+                elsif Value > Max then
+                    Put("För stort värde. ");
+                end if;
+
+                exit when Value in Min .. Max;
+            exception
+                when DATA_ERROR =>
+                    Put("Felakting datatyp. ");
+                    Skip_Line;
+            end;
+        end loop;
     end Get_Safe;
 
     ----------------------------------------------------------------------
