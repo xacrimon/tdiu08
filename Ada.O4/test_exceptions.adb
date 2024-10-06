@@ -28,50 +28,50 @@ procedure Test_Exceptions is
     function Menu_Selection return Integer is
         N : Integer;
     begin
-        Put_Line("1. Felkontrollerad heltalsinläsning");
-        Put_Line("2. Längdkontrollerad stränginläsning");
-        Put_Line("3. Felkontrollerad datuminläsning");
-        Put_Line("4. Avsluta programmet");
+        Put_Line ("1. Felkontrollerad heltalsinläsning");
+        Put_Line ("2. Längdkontrollerad stränginläsning");
+        Put_Line ("3. Felkontrollerad datuminläsning");
+        Put_Line ("4. Avsluta programmet");
 
         loop
-	        Put("Mata in N: ");
-	        Get(N);
+	        Put ("Mata in N: ");
+	        Get (N);
             Skip_Line;
 	        exit when N in 1 .. 4;	 
-	        Put_Line("Felaktigt N, mata in igen!");
+	        Put_Line ("Felaktigt N, mata in igen!");
         end loop;
 
         return N;
     end Menu_Selection;
 
-    procedure Print_Get_Safe_Lead(Min, Max : in Integer) is
+    procedure Print_Get_Safe_Lead (Min, Max : in Integer) is
     begin
-        Put("Mata in värde (");
-        Put(Min, Width => 0);
-        Put(" - ");
-        Put(Max, Width => 0);
-        Put("): ");
+        Put ("Mata in värde (");
+        Put (Min, Width => 0);
+        Put (" - ");
+        Put (Max, Width => 0);
+        Put ("): ");
     end Print_Get_Safe_Lead;
 
-    procedure Get_Safe(Value : out Integer;
-                       Min, Max : in Integer) is
+    procedure Get_Safe (Value : out Integer;
+                        Min, Max : in Integer) is
     begin
         loop
-            Print_Get_Safe_Lead(Min, Max);
+            Print_Get_Safe_Lead (Min, Max);
 
             begin
-                Get(Value);
+                Get (Value);
 
                 if Value < Min then
-                    Put("För litet värde. ");
+                    Put ("För litet värde. ");
                 elsif Value > Max then
-                    Put("För stort värde. ");
+                    Put ("För stort värde. ");
                 end if;
 
                 exit when Value in Min .. Max;
             exception
                 when DATA_ERROR =>
-                    Put("Felakting datatyp. ");
+                    Put ("Felakting datatyp. ");
                     Skip_Line;
             end;
         end loop;
@@ -89,24 +89,24 @@ procedure Test_Exceptions is
     procedure Upg1 is
         Value, Min, Max : Integer;
     begin      
-        Put("Mata in Min och Max: ");
-        Get(Min);
-        Get(Max);
+        Put ("Mata in Min och Max: ");
+        Get (Min);
+        Get (Max);
 
-        Get_Safe(Value, Min, Max);
+        Get_Safe (Value, Min, Max);
         Skip_Line;
 
-        Put("Du matade in heltalet ");
-        Put(Value, Width => 0);
-        Put_Line(".");      
+        Put ("Du matade in heltalet ");
+        Put (Value, Width => 0);
+        Put_Line (".");      
     end Upg1;
 
-    procedure Get_Correct_String(S : out String) is
+    procedure Get_Correct_String (S : out String) is
         I : Integer := 1;
     begin
         while I <= S'Length loop
-            Get_Immediate(S(I));
-            Put(S(I));
+            Get_Immediate (S(I));
+            Put (S(I));
 
             if not (I = 1 and (S(I) = ' ' or S(I) = ASCII.LF)) then
                 if S(I) = ASCII.LF then
@@ -128,43 +128,42 @@ procedure Test_Exceptions is
     -- Get_Correct_String kasta/resa undantag vilket inte ska           --
     -- fångas här utan i huvudprogrammet.                               --
     ----------------------------------------------------------------------
-    procedure Upg2(Length : in Integer) is
+    procedure Upg2 (Length : in Integer) is
         S : String(1 .. Length); 
     begin      
-        Put("Mata in en sträng med exakt ");
-        Put(Length, Width => 0);
-        Put(" tecken: ");
+        Put ("Mata in en sträng med exakt ");
+        Put (Length, Width => 0);
+        Put (" tecken: ");
 
-        Get_Correct_String(S);
+        Get_Correct_String (S);
         Skip_Line;
 
-        Put_Line("Du matade in strängen " & S & ".");      
+        Put_Line ("Du matade in strängen " & S & ".");      
     end Upg2;
 
     type Date_Type is record
         Day, Month, Year : Integer;
     end record;
 
-    procedure Parse_Date(Item : out Date_Type; S : in String) is
+    procedure Parse_Date (Item : out Date_Type; S : in String) is
     begin
-        Item.Year := Integer'Value(S(1 .. 4));
-        Item.Month := Integer'Value(S(6 .. 7));
-        Item.Day := Integer'Value(S(9 .. 10));
+        Item.Year := Integer'Value(S(S'First .. S'First + 3));
+        Item.Month := Integer'Value(S(S'First + 5 .. S'First + 6));
+        Item.Day := Integer'Value(S(S'First + 8 .. S'First + 9));
     end Parse_Date;
 
-    function Days_In_Month(Month, Year : in Integer) return Integer is
+    function Days_In_Month (Month, Year : in Integer) return Integer is
         Days : constant array(1 .. 12) of Integer := (31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31);
         February : constant Integer := 2;
-        February_Leap_Days : constant Integer := 29;
     begin
         if Month = February and ((Year mod 4 = 0 and Year mod 100 /= 0) or Year mod 400 = 0) then
-            return February_Leap_Days;
+            return Days(February) + 1;
         else
             return Days(Month);
         end if;
     end Days_In_Month;
 
-    procedure Validate_Date(Item : in Date_Type) is
+    procedure Validate_Date (Item : in Date_Type) is
     begin
         if Item.Year < 1532 or Item.Year > 9000 then
             raise Year_Error;
@@ -174,46 +173,38 @@ procedure Test_Exceptions is
             raise Month_Error;
         end if;
 
-        if Item.Day < 1 or Item.Day > Days_In_Month(Item.Month, Item.Year) then
+        if Item.Day < 1 or Item.Day > Days_In_Month (Item.Month, Item.Year) then
             raise Day_Error;
         end if;
     end Validate_Date;
 
-    function Zero_Pad(Value, Length : in Integer) return String is
-        S : String(1 .. Length+1);
+    function Zero_Pad (Value, Length : in Integer) return String is
+        Data : String := Integer'Image (Value);
     begin
-        S := Tail(Integer'Image(Value), Length+1);
-
-        for I in S'Range loop
-            if S(I) = ' ' then
-                S(I) := '0';
-            end if;
-        end loop;
-
-        return S(2 .. Length+1);
+        return Tail (Data (2 .. Data'Last), Length, '0');
     end Zero_Pad;
 
-    procedure Get(Item : out Date_Type) is
+    procedure Get (Item : out Date_Type) is
         Date_String : String(1 .. 10);
     begin
         begin
-            Get_Correct_String(Date_String);
+            Get_Correct_String (Date_String);
             Skip_Line;
-            Parse_Date(Item, Date_String);
-            Validate_Date(Item);
+            Parse_Date (Item, Date_String);
+            Validate_Date (Item);
         exception
             when Length_Error | Constraint_Error =>
                 raise Format_Error;
         end;
     end Get;
 
-    procedure Put(Item : in Date_Type) is
+    procedure Put (Item : in Date_Type) is
     begin
-        Put(Zero_Pad(Item.Year, 4));
-        Put("-");
-        Put(Zero_Pad(Item.Month, 2));
-        Put("-");
-        Put(Zero_Pad(Item.Day, 2));
+        Put (Zero_Pad (Item.Year, 4));
+        Put ("-");
+        Put (Zero_Pad (Item.Month, 2));
+        Put ("-");
+        Put (Zero_Pad (Item.Day, 2));
     end Put;
 
     ----------------------------------------------------------------------
@@ -230,23 +221,23 @@ procedure Test_Exceptions is
     begin      
         loop
             begin
-                Put("Mata in ett datum: ");
-                Get(Date);
+                Put ("Mata in ett datum: ");
+                Get (Date);
                 exit;
             exception
                 when Format_Error =>
-                    Put("Felaktigt format! ");
+                    Put ("Felaktigt format! ");
                 when Year_Error =>
-                    Put("Felaktigt år! ");
+                    Put ("Felaktigt år! ");
                 when Month_Error =>
-                    Put("Felaktig månad! ");
+                    Put ("Felaktig månad! ");
                 when Day_Error =>
-                    Put("Felaktig dag! ");
+                    Put ("Felaktig dag! ");
             end;
         end loop;
 
-        Put("Du matade in ");
-        Put(Date);
+        Put ("Du matade in ");
+        Put (Date);
         New_Line;      
     end Upg3;
 
@@ -269,20 +260,20 @@ begin
         if Choice = 1 then
 	        Upg1;
         elsif Choice = 2 then
-	        Put("Mata in en stränglängd: ");
-	        Get(Length);
+	        Put ("Mata in en stränglängd: ");
+	        Get (Length);
 	        Skip_Line;
 
-	        Upg2(Length);
+	        Upg2 (Length);
         elsif Choice = 3 then
 	        Upg3;
         else
-	        Put_Line("Programmet avslutas.");
+	        Put_Line ("Programmet avslutas.");
 	        exit;
         end if;      
     end loop;
 
     exception
         when Length_Error =>
-            Put_Line("För få inmatade tecken!");
+            Put_Line ("För få inmatade tecken!");
 end Test_Exceptions;
