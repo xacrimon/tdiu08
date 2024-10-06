@@ -1,9 +1,22 @@
 with Ada.Text_IO;         use Ada.Text_IO;
 with Ada.Integer_Text_IO; use Ada.Integer_Text_IO;
+with Ada.Strings.Fixed;   use Ada.Strings.Fixed;
 
 procedure Test_Exceptions is
     -- Length_Error kastas om en inmatad sträng är för kort.
     Length_Error : exception;
+
+    -- Format_Error kastas om ett inmatat datum är i fel format.
+    Format_Error : exception;
+
+    -- Year_Error kastas om ett inmatat år är utanför intervallet 1532-9000.
+    Year_Error : exception;
+
+    -- Month_Error kastas om en inmatad månad är utanför intervallet 1-12.
+    Month_Error : exception;
+
+    -- Day_Error kastas om en inmatad dag inte är giltig för den givna månaden.
+    Day_Error : exception;
 
     ----------------------------------------------------------------------
     -- Underprogram för att skriva ut meny och hantera menyval          --
@@ -128,19 +141,50 @@ procedure Test_Exceptions is
     end Upg2;
 
     type Date_Type is record
-        Day   : Integer range 1 .. 31;
-        Month : Integer range 1 .. 12;
-        Year  : Integer range 1532 .. 9000;
+        Day, Month, Year : Integer;
     end record;
 
-    procedure Get(Date : out Date_Type) is
+    procedure Parse_Date(Item : out Date_Type; S : in String) is
     begin
-        Put("TODO");
+        Item.Year := Integer'Value(S(1 .. 4));
+        Item.Month := Integer'Value(S(6 .. 7));
+        Item.Day := Integer'Value(S(9 .. 10));
+    end Parse_Date;
+
+    function Zero_Pad(Value, Length : in Integer) return String is
+        S : String(1 .. Length+1);
+    begin
+        S := Tail(Integer'Image(Value), Length+1);
+
+        for I in S'Range loop
+            if S(I) = ' ' then
+                S(I) := '0';
+            end if;
+        end loop;
+
+        return S(2 .. Length+1);
+    end Zero_Pad;
+
+    procedure Get(Item : out Date_Type) is
+        Date_String : String(1 .. 10);
+    begin
+        begin
+            Get_Correct_String(Date_String);
+            Skip_Line;
+            Parse_Date(Item, Date_String);
+        exception
+            when Length_Error | DATA_ERROR =>
+                raise Format_Error;
+        end;
     end Get;
 
-    procedure Put(Date : in Date_Type) is
+    procedure Put(Item : in Date_Type) is
     begin
-        Put("TODO");
+        Put(Zero_Pad(Item.Year, 4));
+        Put("-");
+        Put(Zero_Pad(Item.Month, 2));
+        Put("-");
+        Put(Zero_Pad(Item.Day, 2));
     end Put;
 
     ----------------------------------------------------------------------
