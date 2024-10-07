@@ -34,7 +34,7 @@ procedure Array_Handling is
     
     procedure Get (Data : out DS1) is
     begin
-        for i in Data'Range loop
+        for i in reverse Data'Range loop
             Get (Data(i));
             if i /= Data'Last then 
                 Eat_Separator;
@@ -44,7 +44,7 @@ procedure Array_Handling is
 
     procedure Put (Data : in DS1) is
     begin
-        for i in Data'Range loop
+        for i in reverse Data'Range loop
             Put (Data (i), Fore => 0, Aft => 3, Exp => 0);
             if i /= Data'Last then 
                 Write_Separator;
@@ -54,7 +54,7 @@ procedure Array_Handling is
 
     procedure Get (Data : out DS2_U) is
     begin
-        for i in Data'Range loop
+        for i in reverse Data'Range loop
             Get (Data (i));
             if i /= Data'Last then 
                 Eat_Separator;
@@ -64,7 +64,7 @@ procedure Array_Handling is
 
     procedure Put (Data : in DS2_U) is
     begin
-        for i in Data'Range loop
+        for i in reverse Data'Range loop
             Put (Data (i));
             if i /= Data'Last then 
                 Write_Separator;
