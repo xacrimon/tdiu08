@@ -18,6 +18,11 @@ procedure Test_Exceptions is
     -- Day_Error kastas om en inmatad dag inte är giltig för den givna månaden.
     Day_Error : exception;
 
+    -- Date_Type är en recordtyp som innehåller tre heltal för dag, månad och år.
+    type Date_Type is record
+        Day, Month, Year : Integer;
+    end record;
+
     ----------------------------------------------------------------------
     -- Underprogram för att skriva ut meny och hantera menyval          --
     --                                                                  --
@@ -44,6 +49,7 @@ procedure Test_Exceptions is
         return N;
     end Menu_Selection;
 
+    -- Print_Get_Safe_Lead skriver ut ledtexten för Get_Safe.
     procedure Print_Get_Safe_Lead (Min, Max : in Integer) is
     begin
         Put ("Mata in värde (");
@@ -53,6 +59,7 @@ procedure Test_Exceptions is
         Put ("): ");
     end Print_Get_Safe_Lead;
 
+    -- Get_Safe läser in ett heltal med ett visst antal tecken. Försöker igen om inmatningen är felaktig.
     procedure Get_Safe (Value : out Integer;
                         Min, Max : in Integer) is
     begin
@@ -101,6 +108,8 @@ procedure Test_Exceptions is
         Put_Line (".");      
     end Upg1;
 
+    -- Get_Correct_String läser in en sträng med ett visst antal och kastar Length_Error
+    -- om den stöter på en ny rad innan strängen är fylld.
     procedure Get_Correct_String (S : out String) is
         I : Integer := 1;
     begin
@@ -141,10 +150,7 @@ procedure Test_Exceptions is
         Put_Line ("Du matade in strängen " & S & ".");      
     end Upg2;
 
-    type Date_Type is record
-        Day, Month, Year : Integer;
-    end record;
-
+    -- Parse_Date tyder datumsträng på formatet YYYY-MM-DD och lagrar heltalen i en Date_Type.
     procedure Parse_Date (Item : out Date_Type; S : in String) is
     begin
         Item.Year := Integer'Value(S(S'First .. S'First + 3));
@@ -152,6 +158,7 @@ procedure Test_Exceptions is
         Item.Day := Integer'Value(S(S'First + 8 .. S'First + 9));
     end Parse_Date;
 
+    -- Days_In_Month returnerar antalet dagar i en given månad ett visst år.
     function Days_In_Month (Month, Year : in Integer) return Integer is
         Days : constant array(1 .. 12) of Integer := (31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31);
         February : constant Integer := 2;
@@ -163,6 +170,8 @@ procedure Test_Exceptions is
         end if;
     end Days_In_Month;
 
+    -- Validate_Date kontrollerar att ett datum är giltigt enligt uppgiftskrav.
+    -- Är det inte det kastas en av Year_Error, Month_Error eller Day_Error.
     procedure Validate_Date (Item : in Date_Type) is
     begin
         if Item.Year < 1532 or Item.Year > 9000 then
@@ -178,12 +187,14 @@ procedure Test_Exceptions is
         end if;
     end Validate_Date;
 
+    -- Zero_Pad konverterar ett heltal till en sträng och fyller på med ledande nollor till en viss längd.
     function Zero_Pad (Value, Length : in Integer) return String is
         Data : String := Integer'Image (Value);
     begin
         return Tail (Data(2 .. Data'Last), Length, '0');
     end Zero_Pad;
 
+    -- Get läser in ett datum på formatet YYYY-MM-DD från standard input.
     procedure Get (Item : out Date_Type) is
         Date_String : String(1 .. 10);
     begin
@@ -198,6 +209,7 @@ procedure Test_Exceptions is
         end;
     end Get;
 
+    -- Put skriver ut ett datum på formatet YYYY-MM-DD till standard output.
     procedure Put (Item : in Date_Type) is
     begin
         Put (Zero_Pad (Item.Year, 4));
