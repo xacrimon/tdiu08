@@ -115,12 +115,12 @@ procedure Test_Exceptions is
         Next : Character;
     begin
         loop
+            Get(Next);
+            exit when Next /= ' ';
+
             if End_Of_Line then
                 Skip_Line;
             end if;
-
-            Get(Next);
-            exit when Next /= ' ';
         end loop;
 
         loop
@@ -209,9 +209,9 @@ procedure Test_Exceptions is
     begin
         begin
             Get_Correct_String (Date_String);
-            Skip_Line;
             Parse_Date (Item, Date_String);
             Validate_Date (Item);
+            Skip_Line;
         exception
             when Length_Error | Constraint_Error =>
                 raise Format_Error;
