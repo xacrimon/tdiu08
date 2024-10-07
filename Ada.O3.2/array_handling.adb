@@ -36,7 +36,7 @@ procedure Array_Handling is
     begin
         for i in reverse Data'Range loop
             Get (Data(i));
-            if i /= Data'Last then 
+            if i /= Data'First then
                 Eat_Separator;
             end if;
         end loop;
@@ -46,7 +46,7 @@ procedure Array_Handling is
     begin
         for i in reverse Data'Range loop
             Put (Data (i), Fore => 0, Aft => 3, Exp => 0);
-            if i /= Data'Last then 
+            if i /= Data'First then
                 Write_Separator;
             end if;
         end loop;
@@ -56,7 +56,7 @@ procedure Array_Handling is
     begin
         for i in reverse Data'Range loop
             Get (Data (i));
-            if i /= Data'Last then 
+            if i /= Data'First then
                 Eat_Separator;
             end if;
         end loop;
@@ -66,7 +66,7 @@ procedure Array_Handling is
     begin
         for i in reverse Data'Range loop
             Put (Data (i));
-            if i /= Data'Last then 
+            if i /= Data'First then
                 Write_Separator;
             end if;
         end loop;
