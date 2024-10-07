@@ -112,18 +112,27 @@ procedure Test_Exceptions is
     -- om den stöter på en ny rad innan strängen är fylld.
     procedure Get_Correct_String (S : out String) is
         I : Integer := 1;
+        Next : Character;
     begin
-        while I <= S'Length loop
-            Get_Immediate (S(I));
-            Put (S(I));
-
-            if not (I = 1 and (S(I) = ' ' or S(I) = ASCII.LF)) then
-                if S(I) = ASCII.LF then
-                    raise Length_Error;
-                end if;
-
-                I := I + 1;
+        loop
+            if End_Of_Line then
+                Skip_Line;
             end if;
+
+            Get(Next);
+            exit when Next /= ' ';
+        end loop;
+
+        loop
+            S(I) := Next;
+            I := I + 1;
+            exit when I > S'Length;
+
+            if End_Of_Line then
+                raise Length_Error;
+            end if;
+
+            Get(Next);
         end loop;
     end Get_Correct_String;
 
