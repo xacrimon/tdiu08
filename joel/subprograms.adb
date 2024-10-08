@@ -8,78 +8,78 @@ with Ada.Numerics.Elementary_Functions; use Ada.Numerics.Elementary_Functions;
 procedure Subprograms is
     -- Deluppgift 1.
     -- Notering för assistent: Left-hand-side och Right-hand-side av operatorn.
-    function "-" (Lhs : in String;
-                  Rhs : in Integer) return Integer is
+    function "*" (Lhs : in Character;
+                  Rhs : in Float) return Float is
+        Lhs_Value : Float := Float(Character'Pos(Lhs) - Character'Pos('0'));
     begin
-        return Integer(Float'Value(Lhs)) - Rhs;
-    end "-";
+        return Float'Rounding(Lhs_Value * Rhs);
+    end "*";
 
     -- Deluppgift 2.
-    procedure ComputeCircleArea(Radius : in Integer;
-                                Area : out Integer) is
-        F_Radius : Float := Float(Radius);
-        F_Area : Float;
+    function Max_Of(A, B : in Float) return Float is
     begin
-        F_Area := F_Radius * F_Radius * 3.14;
-        Area := Integer(Float'Floor(F_Area));
-    end ComputeCircleArea;
+        if A > B then
+            return A;
+        else
+            return B;
+        end if;
+    end Max_Of;
 
     -- Deluppgift 3.
-    function ComputeEquilateralTriangleArea(Side : in Float) return Float is
-        Raw_Area : Float;
+    procedure ParseInt(Input : in String;
+                       Output : out Integer) is
+        Raw_Value : Float;
     begin
-        Raw_Area := Side * (Side * Sqrt(3.0) / 2.0) / 2.0;
-        return Float'Floor(Raw_Area);
-    end ComputeEquilateralTriangleArea;
+        Raw_Value := Float'Value(Input);
+        Output := Integer(Float'Floor(Raw_Value));
+    end ParseInt;
 
     -- Variabler för deluppgift 1.
-    DiffLhs : String(1..3);
-    DiffRhs, DiffResult : Integer;
+    Product_Lhs : Character;
+    Product_Rhs : Float;
 
     -- Variabler för deluppgift 2.
-    Radius : Integer;
-    CircleArea: Integer;
+    Max_A, Max_B : Float;
 
     -- Variabler för deluppgift 3.
-    Side : Float;
-    TriangleArea : Float;
+    ToConvert : String (1 .. 3);
+    Parsed_Int : Integer;
 begin
-    -- Deluppgift 1 inläsning och beräkning.
-    Put("Mata in en sträng: ");
-    Get(DiffLhs);
-    Put("Mata in ett heltal: ");
-    Get(DiffRhs);
+    -- Deluppgift 1 inläsning.
+    Put("Mata in ett tecken: ");
+    Get(Product_Lhs);
+    Put("Mata in ett flyttal: ");
+    Get(Product_Rhs);
     Skip_Line;
-    DiffResult := DiffLhs - DiffRhs;
 
     -- Deluppgift 1 utmatning.
-    Put("Den beräknade differensen mellan ");
-    Put(DiffLhs);
+    Put("Den beräknade produkten av ");
+    Put(Product_Lhs);
     Put(" och ");
-    Put(DiffRhs, Width => 0);
+    Put(Product_Rhs, Fore => 0, Aft => 1, Exp => 0);
     Put(" blir ");
-    Put(DiffResult, Width => 0);
+    Put(Product_Lhs * Product_Rhs, Fore => 0, Aft => 1, Exp => 0);
     New_Line(2);
 
-    -- Deluppgift 2 inläsning och beräkning.
-    Put("Mata in längden: ");
-    Get(Radius);
+    -- Deluppgift 2 inläsning.
+    Put("Mata in två flyttal: ");
+    Get(Max_A);
+    Get(Max_B);
     Skip_Line;
-    ComputeCircleArea(Radius, CircleArea);
 
     -- Deluppgift 2 utmatning.
-    Put("Den beräknade arean blev: ");
-    Put(CircleArea, Width => 0);
+    Put("Det största värdet av dessa är: ");
+    Put(Max_Of(Max_A, Max_B), Fore => 0, Aft => 1, Exp => 0);
     New_Line(2);
 
-    -- Deluppgift 3 inläsning och beräkning.
-    Put("Mata in längden: ");
-    Get(Side);
+    -- Deluppgift 3 inläsning.
+    Put("Mata in en sträng: ");
+    Get(ToConvert);
     Skip_Line;
-    TriangleArea := ComputeEquilateralTriangleArea(Side);
 
-    -- Deluppgift 3 utmatning.
-    Put("Den beräknade arean blev: ");
-    Put(TriangleArea, Fore => 0, Aft => 1, Exp => 0);
+    -- Deluppgift 3 beräkning och utmatning.
+    ParseInt(ToConvert, Parsed_Int);
+    Put("Om man omvandlar strängen: " & ToConvert & " till ett heltal blir det: ");
+    Put(Parsed_Int, Width => 0);
     New_Line;
 end Subprograms;
