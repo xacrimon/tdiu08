@@ -214,7 +214,6 @@ procedure Test_Exceptions is
             Get_Correct_String (Date_String);
             Parse_Date (Item, Date_String);
             Validate_Date (Item);
-            Skip_Line;
         exception
             when Length_Error | Constraint_Error =>
                 raise Format_Error;
@@ -247,6 +246,7 @@ procedure Test_Exceptions is
             begin
                 Put ("Mata in ett datum: ");
                 Get (Date);
+                Skip_Line;
                 exit;
             exception
                 when Format_Error =>
