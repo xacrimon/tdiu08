@@ -111,7 +111,7 @@ procedure Test_Exceptions is
         Put_Line (".");      
     end Upg1;
 
-    -- Get_Correct_String läser in en sträng med ett visst antal och kastar Length_Error
+    -- Get_Correct_String läser in en sträng med ett visst antal tecken och kastar Length_Error
     -- om den stöter på en ny rad innan strängen är fylld.
     procedure Get_Correct_String (S : out String) is
         I : Integer := 1;
