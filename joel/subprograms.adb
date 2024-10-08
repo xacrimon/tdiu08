@@ -3,7 +3,6 @@
 with Ada.Text_IO;                       use Ada.Text_IO;
 with Ada.Integer_Text_IO;               use Ada.Integer_Text_IO;
 with Ada.Float_Text_IO;                 use Ada.Float_Text_IO;
-with Ada.Numerics.Elementary_Functions; use Ada.Numerics.Elementary_Functions;
 
 procedure Subprograms is
     -- Deluppgift 1.
@@ -26,13 +25,12 @@ procedure Subprograms is
     end Max_Of;
 
     -- Deluppgift 3.
-    procedure ParseInt(Input : in String;
-                       Output : out Integer) is
-        Raw_Value : Float;
+    procedure Parse_Int(Input : in String;
+                        Output : out Integer) is
+        Raw_Value : Float := Float'Value(Input);
     begin
-        Raw_Value := Float'Value(Input);
         Output := Integer(Float'Floor(Raw_Value));
-    end ParseInt;
+    end Parse_Int;
 
     -- Variabler för deluppgift 1.
     Product_Lhs : Character;
@@ -78,7 +76,7 @@ begin
     Skip_Line;
 
     -- Deluppgift 3 beräkning och utmatning.
-    ParseInt(ToConvert, Parsed_Int);
+    Parse_Int(ToConvert, Parsed_Int);
     Put("Om man omvandlar strängen: " & ToConvert & " till ett heltal blir det: ");
     Put(Parsed_Int, Width => 0);
     New_Line;
