@@ -81,7 +81,7 @@ procedure Test_Exceptions is
                 exit when Value in Min .. Max;
             exception
                 when DATA_ERROR =>
-                    Put ("Felakting datatyp. ");
+                    Put ("Fel datatyp. ");
                     Skip_Line;
             end;
         end loop;
