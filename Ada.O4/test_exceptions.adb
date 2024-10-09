@@ -162,6 +162,17 @@ procedure Test_Exceptions is
         Put_Line ("Du matade in strängen " & S & ".");      
     end Upg2;
 
+    function Parse_Date_Field (Field : in String) return Integer is
+    begin
+        for I in Field'Range loop
+            if not(Field(I) in '0' .. '9') then
+                raise Format_Error;
+            end if;
+        end loop;
+
+        return Integer'Value(Field);
+    end Parse_Date_Field;
+
     -- Parse_Date tyder datumsträng på formatet YYYY-MM-DD och lagrar heltalen i en Date_Type.
     procedure Parse_Date (Item : out Date_Type; S : in String) is
     begin
@@ -169,9 +180,9 @@ procedure Test_Exceptions is
             raise Format_Error;
         end if;
 
-        Item.Year := Integer'Value(S(S'First .. S'First + 3));
-        Item.Month := Integer'Value(S(S'First + 5 .. S'First + 6));
-        Item.Day := Integer'Value(S(S'First + 8 .. S'First + 9));
+        Item.Year := Parse_Date_Field(S(S'First .. S'First + 3));
+        Item.Month := Parse_Date_Field(S(S'First + 5 .. S'First + 6));
+        Item.Day := Parse_Date_Field(S(S'First + 8 .. S'First + 9));
     end Parse_Date;
 
     -- Days_In_Month returnerar antalet dagar i en given månad ett visst år.
