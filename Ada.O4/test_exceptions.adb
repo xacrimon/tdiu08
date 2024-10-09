@@ -165,6 +165,10 @@ procedure Test_Exceptions is
     -- Parse_Date tyder datumsträng på formatet YYYY-MM-DD och lagrar heltalen i en Date_Type.
     procedure Parse_Date (Item : out Date_Type; S : in String) is
     begin
+        if S(S'First + 4) /= '-' or S(S'First + 7) /= '-' then
+            raise Format_Error;
+        end if;
+
         Item.Year := Integer'Value(S(S'First .. S'First + 3));
         Item.Month := Integer'Value(S(S'First + 5 .. S'First + 6));
         Item.Day := Integer'Value(S(S'First + 8 .. S'First + 9));
