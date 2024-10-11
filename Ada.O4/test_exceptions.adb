@@ -65,7 +65,8 @@ procedure Test_Exceptions is
     end Print_Get_Safe_Lead;
 
     -- Get_Safe läser in ett heltal med ett visst antal tecken. Försöker igen om inmatningen är felaktig.
-    procedure Get_Safe (Value : out Integer; Min, Max : in Integer) is
+    procedure Get_Safe (Value    :    out Integer;
+                        Min, Max : in     Integer) is
     begin
         loop
             Print_Get_Safe_Lead (Min, Max);
@@ -174,7 +175,8 @@ procedure Test_Exceptions is
     end Parse_Date_Field;
 
     -- Parse_Date tyder datumsträng på formatet YYYY-MM-DD och lagrar heltalen i en Date_Type.
-    procedure Parse_Date (Item : out Date_Type; S : in String) is
+    procedure Parse_Date (Item :    out Date_Type; 
+                          S    : in     String) is
     begin
         if S (S'First + 4) /= '-' or S (S'First + 7) /= '-' then
             raise Format_Error;
@@ -187,12 +189,10 @@ procedure Test_Exceptions is
 
     -- Days_In_Month returnerar antalet dagar i en given månad ett visst år.
     function Days_In_Month (Month, Year : in Integer) return Integer is
-        Days     : constant array (1 .. 12) of Integer :=
-           (31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31);
-        February : constant Integer                    := 2;
+        Days     : constant array (1 .. 12) of Integer := (31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31);
+        February : constant Integer := 2;
     begin
-        if Month = February and
-           ((Year mod 4 = 0 and Year mod 100 /= 0) or Year mod 400 = 0)
+        if Month = February and ((Year mod 4 = 0 and Year mod 100 /= 0) or Year mod 400 = 0)
         then
             return Days (February) + 1;
         else
