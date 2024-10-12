@@ -3,7 +3,6 @@
 
 with Ada.Text_IO;         use Ada.Text_IO;
 with Ada.Integer_Text_IO; use Ada.Integer_Text_IO;
-with Ada.Strings.Fixed;   use Ada.Strings.Fixed;
 
 procedure Test_Exceptions is
     -- Length_Error kastas om en inmatad sträng är för kort.
