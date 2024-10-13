@@ -126,11 +126,11 @@ procedure Test_Exceptions is
         end loop;
 
         for I in S'First + 1 .. S'Length loop
-            Get(S (I));
-
-            if I < S'Length and End_Of_Line then
+            if End_Of_Line then
                 raise Length_Error;
             end if;
+
+            Get(S (I));
         end loop;
     end Get_Correct_String;
 
