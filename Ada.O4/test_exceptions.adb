@@ -115,27 +115,22 @@ procedure Test_Exceptions is
     -- Get_Correct_String läser in en sträng med ett visst antal tecken och kastar Length_Error
     -- om den stöter på en ny rad innan strängen är fylld.
     procedure Get_Correct_String (S : out String) is
-        Next : Character;
     begin
         loop
-            Get (Next);
-            exit when Next /= ' ';
+            Get (S (S'First));
+            exit when S (S'First) /= ' ';
 
             if End_Of_Line then
                 Skip_Line;
             end if;
         end loop;
 
-        for I in 1 .. S'Length loop
-            S (I) := Next;
+        for I in S'First + 1 .. S'Length loop
+            Get(S (I));
 
-            exit when I = S'Length;
-
-            if End_Of_Line then
+            if I < S'Length and End_Of_Line then
                 raise Length_Error;
             end if;
-
-            Get (Next);
         end loop;
     end Get_Correct_String;
 
