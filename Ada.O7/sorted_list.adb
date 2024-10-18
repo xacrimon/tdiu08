@@ -61,30 +61,22 @@ package body Sorted_List is
         end if;
     end Member;
 
-    procedure Remove_Recursive (Node      : in out List_Type;
-                                Node_Prev : in     List_Type;
-                                Value     : in     Integer) is
+    procedure Remove (List  : in out List_Type;
+                      Value : in     Integer) is
         Tmp : List_Type;
     begin
-        if Empty (Node) then
+        if Empty (List) then
             raise No_Such_Element_Error;
         end if;
 
-        if Node.Data = Value then
-            Tmp := Node.Next;
-            Free_List (Node);
-            Node := Tmp;
+        if List.Data = Value then
+            Tmp := List.Next;
+            Free_List (List);
+            List := Tmp;
             return;
         else
-            Remove_Recursive (Node.Next, Node, Value);
+            Remove (List.Next, Value);
         end if;
-    end Remove_Recursive;
-
-    procedure Remove (List  : in out List_Type;
-                      Value : in     Integer) is
-        Node_Prev : List_Type := null;
-    begin
-        Remove_Recursive (List, Node_Prev, Value);
     end Remove;
 
     procedure Delete (List : in out List_Type) is
