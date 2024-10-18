@@ -4,11 +4,21 @@
         {
             "label": "Run",
             "type": "shell",
-            "command": "./build.sh ${relativeFileDirname} ${fileBasenameNoExtension}",
+            "command": "./build.sh ${relativeFileDirname} ${fileBasenameNoExtension} 0",
             "problemMatcher": [],
             "group": {
                 "kind": "build",
                 "isDefault": true
+            }
+        },
+        {
+            "label": "Valgrind",
+            "type": "shell",
+            "command": "./build.sh ${relativeFileDirname} ${fileBasenameNoExtension} 1",
+            "problemMatcher": [],
+            "group": {
+                "kind": "build",
+                "isDefault": false
             }
         }
     ]
