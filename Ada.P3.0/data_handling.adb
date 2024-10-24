@@ -1,18 +1,31 @@
 -- joewe275: Arbetat enskilt
 
 with Ada.Text_IO;           use Ada.Text_IO;
+with Ada.Float_Text_IO;     use Ada.Float_Text_IO;
 
 procedure Data_Handling is
-    type Inner is record
-        W : String (1 .. 3);
-        B : String (1 .. 3);
+    type Innermost_Top is record
+        S : Float;
+        U : Character;
     end record;
 
-    type Middle is
-        array (Character range 'a' .. 'd', -99 .. -97) of Inner;
+    type Top_Integer_Array is
+        array (-53 .. -52) of Innermost_Top;
+    
+    type Top_Char_Map is
+        array (Character range '5' .. '6') of Top_Integer_Array;
 
-    type Outer is
-        array (92 .. 94) of Middle;
+    type Bottom is
+        array (Character range 'M' .. 'O', 71 .. 73) of Float;
+
+    type Outer is record
+        H : Top_Char_Map;
+        D : Bottom;
+    end record;
+
+    type Wrapper is record
+        T : Outer;
+    end record;
 
     procedure Eat_Sep is
         Scratch : Character;
@@ -25,38 +38,84 @@ procedure Data_Handling is
         Put (" ");
     end Write_Sep;
 
-    procedure Get (Data : out Inner) is
+    procedure Get (Data : out Innermost_Top) is
     begin
-        Get (Data.W);
+        Get(Data.S);
         Eat_Sep;
-        Get (Data.B);
+        Get(Data.U);
     end Get;
 
-    procedure Put (Data : in Inner) is
+    procedure Put (Data : in Innermost_Top) is
     begin
-        Put (Data.W);
+        Put(Data.S, Fore => 0, Aft => 1, Exp => 0);
         Write_Sep;
-        Put (Data.B);
+        Put(Data.U);
     end Put;
 
-    procedure Get (Data : out Middle) is
+    procedure Get (Data : out Top_Integer_Array) is
     begin
-        for X in Data'Range (1) loop
-            for Y in Data'Range (2) loop
-                Get (Data (X, Y));
-                if not (X = Data'Last (1) and Y = Data'Last (2)) then 
+        for I in Data'Range loop
+            Get(Data (I));
+
+            if I /= Data'Last then
+                Eat_Sep;
+            end if;
+        end loop;
+    end Get;
+
+    procedure Put (Data : in Top_Integer_Array) is
+    begin
+        for I in reverse Data'Range loop
+            Put(Data (I));
+
+            if I /= Data'First then
+                Write_Sep;
+            end if;
+        end loop;
+    end Put;
+
+    procedure Get (Data : out Top_Char_Map) is
+    begin
+        for I in Data'Range loop
+            Get(Data (I));
+
+            if I /= Data'Last then
+                Eat_Sep;
+            end if;
+        end loop;
+    end Get;
+
+    procedure Put (Data : in Top_Char_Map) is
+    begin
+        for I in Data'Range loop
+            Put(Data (I));
+
+            if I /= Data'Last then
+                Write_Sep;
+            end if;
+        end loop;
+    end Put;
+
+    procedure Get (Data : out Bottom) is
+    begin
+        for I in Data'Range (1) loop
+            for J in reverse Data'Range (2) loop
+                Get (Data (I, J));
+
+                if I /= Data'Last (1) or J /= Data'First (2) then
                     Eat_Sep;
                 end if;
             end loop;
         end loop;
     end Get;
 
-    procedure Put (Data : in Middle) is
+    procedure Put (Data : in Bottom) is
     begin
-        for X in reverse Data'Range (1) loop
-            for Y in Data'Range (2) loop
-                Put (Data (X, Y));
-                if not (X = Data'First (1) and Y = Data'Last (2)) then 
+        for I in reverse Data'Range (1) loop
+            for J in Data'Range (2) loop
+                Put (Data (I, J), Fore => 0, Aft => 2, Exp => 0);
+
+                if I /= Data'First (1) or J /= Data'Last (2) then
                     Write_Sep;
                 end if;
             end loop;
@@ -65,25 +124,29 @@ procedure Data_Handling is
 
     procedure Get (Data : out Outer) is
     begin
-        for X in Data'Range loop
-            Get (Data (X));
-            if X /= Data'Last then 
-                Eat_Sep;
-            end if;
-        end loop;
+        Get(Data.H);
+        Eat_Sep;
+        Get(Data.D);
     end Get;
 
     procedure Put (Data : in Outer) is
     begin
-        for X in reverse Data'Range loop
-            Put (Data (X));
-            if X /= Data'First then 
-                Write_Sep;
-            end if;
-        end loop;
+        Put(Data.H);
+        Write_Sep;
+        Put(Data.D);
     end Put;
 
-    Data : Outer;
+    procedure Get (Data : out Wrapper) is
+    begin
+        Get(Data.T);
+    end Get;
+
+    procedure Put (Data : in Wrapper) is
+    begin
+        Put(Data.T);
+    end Put;
+
+    Data : Wrapper;
 begin
     Put ("Mata in datamängd: ");
     Get (Data);
