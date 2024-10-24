@@ -9,11 +9,11 @@ procedure Data_Handling is
         U : Character;
     end record;
 
-    type Top_Integer_Array is
+    type Top_Negative_Index_Array is
         array (-53 .. -52) of Innermost_Top;
-    
+
     type Top_Char_Map is
-        array (Character range '5' .. '6') of Top_Integer_Array;
+        array (Character range '5' .. '6') of Top_Negative_Index_Array;
 
     type Bottom is
         array (Character range 'M' .. 'O', 71 .. 73) of Float;
@@ -40,22 +40,22 @@ procedure Data_Handling is
 
     procedure Get (Data : out Innermost_Top) is
     begin
-        Get(Data.S);
+        Get (Data.S);
         Eat_Sep;
-        Get(Data.U);
+        Get (Data.U);
     end Get;
 
     procedure Put (Data : in Innermost_Top) is
     begin
-        Put(Data.S, Fore => 0, Aft => 1, Exp => 0);
+        Put (Data.S, Fore => 0, Aft => 1, Exp => 0);
         Write_Sep;
-        Put(Data.U);
+        Put (Data.U);
     end Put;
 
-    procedure Get (Data : out Top_Integer_Array) is
+    procedure Get (Data : out Top_Negative_Index_Array) is
     begin
         for I in Data'Range loop
-            Get(Data (I));
+            Get (Data (I));
 
             if I /= Data'Last then
                 Eat_Sep;
@@ -63,10 +63,10 @@ procedure Data_Handling is
         end loop;
     end Get;
 
-    procedure Put (Data : in Top_Integer_Array) is
+    procedure Put (Data : in Top_Negative_Index_Array) is
     begin
         for I in reverse Data'Range loop
-            Put(Data (I));
+            Put (Data (I));
 
             if I /= Data'First then
                 Write_Sep;
@@ -77,7 +77,7 @@ procedure Data_Handling is
     procedure Get (Data : out Top_Char_Map) is
     begin
         for I in Data'Range loop
-            Get(Data (I));
+            Get (Data (I));
 
             if I /= Data'Last then
                 Eat_Sep;
@@ -88,7 +88,7 @@ procedure Data_Handling is
     procedure Put (Data : in Top_Char_Map) is
     begin
         for I in Data'Range loop
-            Put(Data (I));
+            Put (Data (I));
 
             if I /= Data'Last then
                 Write_Sep;
@@ -124,26 +124,26 @@ procedure Data_Handling is
 
     procedure Get (Data : out Outer) is
     begin
-        Get(Data.H);
+        Get (Data.H);
         Eat_Sep;
-        Get(Data.D);
+        Get (Data.D);
     end Get;
 
     procedure Put (Data : in Outer) is
     begin
-        Put(Data.H);
+        Put (Data.H);
         Write_Sep;
-        Put(Data.D);
+        Put (Data.D);
     end Put;
 
     procedure Get (Data : out Wrapper) is
     begin
-        Get(Data.T);
+        Get (Data.T);
     end Get;
 
     procedure Put (Data : in Wrapper) is
     begin
-        Put(Data.T);
+        Put (Data.T);
     end Put;
 
     Data : Wrapper;
