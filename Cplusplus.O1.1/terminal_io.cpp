@@ -4,7 +4,7 @@
 
 using namespace std;
 
-void skip_line() {
+static void skip_line() {
     cin.ignore(numeric_limits<streamsize>::max(), '\n');
 }
 
