@@ -4,10 +4,6 @@
 
 using namespace std;
 
-static void skip_line() {
-    cin.ignore(numeric_limits<streamsize>::max(), '\n');
-}
-
 int main() {
     int heltal;
     float flyttal;
@@ -16,7 +12,7 @@ int main() {
 
     cout << "Skriv in ett heltal: ";
     cin >> heltal;
-    skip_line();
+    cin.ignore(1000, '\n');
     cout << "Du skrev in heltalet: " << heltal << endl << endl;
 
     cout << "Skriv in fem heltal: ";
@@ -30,53 +26,53 @@ int main() {
     cin >> heltal;
     cout << heltal << " ";
     cin >> heltal;
-    skip_line();
+    cin.ignore(1000, '\n');
     cout << heltal << endl << endl;
 
     cout << "Skriv in ett flyttal: ";
     cin >> flyttal;
-    skip_line();
+    cin.ignore(1000, '\n');
     cout << "Du skrev in flyttalet: " << fixed << setprecision(3) << flyttal << endl << endl;
 
     cout << "Skriv in ett heltal och ett flyttal: ";
     cin >> heltal >> flyttal;
-    skip_line();
+    cin.ignore(1000, '\n');
     cout
         << "Du skrev in heltalet:" << setw(10) << heltal << endl
         << "Du skrev in flyttalet:" << setw(9) << fixed << setprecision(4) << flyttal << endl << endl;
     
     cout << "Skriv in ett flyttal och ett heltal: ";
     cin >> flyttal >> heltal;
-    skip_line();
+    cin.ignore(1000, '\n');
     cout
         << "Du skrev in heltalet:" << setfill('-') << setw(10) << heltal << endl
         << "Du skrev in flyttalet:" << setfill('-') << setw(9) << fixed << setprecision(4) << flyttal << endl << endl;
 
     cout << "Skriv in ett tecken: ";
     cin >> tecken;
-    skip_line();
+    cin.ignore(1000, '\n');
     cout << "Du skrev in tecknet: " << tecken << endl << endl;
 
     cout << "Skriv in ett ord: ";
     cin >> text;
-    skip_line();
+    cin.ignore(1000, '\n');
     cout << "Du skrev in ordet: " << text << endl << endl;
 
     cout << "Skriv in ett heltal och ett ord: ";
     cin >> heltal >> text;
-    skip_line();
+    cin.ignore(1000, '\n');
     cout
         << "Du skrev in heltalet |" << heltal << "|"
         << " och ordet |" << text << "|." << endl << endl;
 
     cout << "Skriv in ett tecken och ett ord: ";
     cin >> tecken >> text;
-    skip_line();
+    cin.ignore(1000, '\n');
     cout << "Du skrev in \"" << text << "\" och \"" << tecken << "\"." << endl << endl;
 
     cout << "Skriv in ett ord och ett tecken: ";
     cin >> text >> tecken;
-    skip_line();
+    cin.ignore(1000, '\n');
     cout << "Du skrev in \"" << text << "\" och \"" << tecken << "\"." << endl << endl;
 
     cout << "Skriv in en textrad: ";
@@ -94,6 +90,6 @@ int main() {
     cin >> text;
     cout << "\"" << text << "\" och ";
     cin >> text;
-    skip_line();
+    cin.ignore(1000, '\n');
     cout << "\"" << text << "\"." << endl << endl;
 }
