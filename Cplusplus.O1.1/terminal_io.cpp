@@ -87,12 +87,12 @@ int main()
 
     cout << "Skriv in en textrad: ";
     getline(cin, text);
-    cout << "Du skrev in: \"" << text << "\"." << endl
+    cout << "Du skrev in \"" << text << "\"." << endl
          << endl;
 
     cout << "Skriv in en till rad text: ";
     getline(cin, text);
-    cout << "Du skrev in: \"" << text << "\"." << endl
+    cout << "Du skrev in \"" << text << "\"." << endl
          << endl;
 
     cout << "Skriv in en rad med tre ord: ";
