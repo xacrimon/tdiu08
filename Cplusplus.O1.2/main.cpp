@@ -28,17 +28,17 @@ int main()
             cout << "Felaktigt slutvärde!" << endl;
     } while (end < start);
 
-    cout << "Celsius   Kelvin   Fahrenheit   Reamur" << endl;
-    cout << "--------------------------------------" << endl;
+    cout << "Celsius   Kelvin   Fahrenheit   Reaumur" << endl;
+    cout << "---------------------------------------" << endl;
     for (int i = 0; i < end - start + 1; i++)
     {
         cout << setw(7) << start + i;
         cout << setw(9) << fixed << setprecision(2) << static_cast<float>(start + i) + 273.15f;
         cout << setw(13) << fixed << setprecision(2) << static_cast<float>(start + i) * 1.8f + 32.f;
-        cout << setw(9) << fixed << setprecision(2) << static_cast<float>(start + i) * 0.8f;
+        cout << setw(10) << fixed << setprecision(2) << static_cast<float>(start + i) * 0.8f;
         cout << endl;
     }
-    cout << "--------------------------------------" << endl;
+    cout << "---------------------------------------" << endl;
     cout << endl;
 
     // Del 2
@@ -60,7 +60,6 @@ int main()
             space++;
     }
     cin.ignore(1000, '\n');
-    cout << endl;
 
     cout << "Texten innehöll:" << endl;
     cout << "Alfabetiska tecken:" << alpha << endl;
@@ -74,7 +73,7 @@ int main()
     int wordCount{0}, charCount{0};
 
     cout << "Del 3: Ordhantering" << endl;
-    cout << "Mata in en text" << endl;
+    cout << "Mata in en text:" << endl;
 
     while (!cin.eof())
     {
@@ -98,6 +97,8 @@ int main()
         else
             tmp.push_back(c);
     }
+
+    cout << endl;
 
     if (wordCount != 0)
     {
