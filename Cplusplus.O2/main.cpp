@@ -103,12 +103,16 @@ static void dispatch(const Subprogram subprogram)
     {
     case FACTORIAL:
         subprogram_factorial();
+        break;
     case MULTIPLY_STRING:
         subprogram_multiply_string();
+        break;
     case SWITCH_PLACES:
         subprogram_switch_places();
+        break;
     case CALCULATE_LENGTH:
         subprogram_calculate_length();
+        break;
     case EXIT:
         break;
     }
