@@ -64,7 +64,7 @@ static void subprogram_switch_places()
     clear_input();
     op_switch_places(a, b);
     std::cout
-        << "Heltalets värde är nu " << a << std::endl
+        << "Heltalets värde är nu " << a << "\n"
         << "Flyttalets värde är nu " << std::fixed << std::setprecision(1) << b << std::endl;
 }
 
@@ -84,7 +84,7 @@ static void subprogram_calculate_length()
     float average_length;
     op_calculate_length(text_1, text_2, total_length, average_length);
     std::cout
-        << "Totallängd: " << total_length << std::endl
+        << "Totallängd: " << total_length << "\n"
         << "Medellängd: " << std::fixed << std::setprecision(1) << average_length << std::endl;
 }
 
@@ -123,11 +123,11 @@ static Subprogram menu()
     for (;;)
     {
         std::cout
-            << "1. Beräkna N-fakultet." << std::endl
-            << "2. Multiplicera en sträng." << std::endl
-            << "3. Byta värden på ett heltal och ett flyttal." << std::endl
-            << "4. Beräkna totala längden samt medellängden på två strängar." << std::endl
-            << "5. Avsluta programmet." << std::endl
+            << "1. Beräkna N-fakultet.\n"
+            << "2. Multiplicera en sträng.\n"
+            << "3. Byta värden på ett heltal och ett flyttal.\n"
+            << "4. Beräkna totala längden samt medellängden på två strängar.\n"
+            << "5. Avsluta programmet.\n"
             << "Val: ";
 
         int choice;
@@ -161,4 +161,6 @@ int main()
 
         dispatch(subprogram);
     }
+
+    return 0;
 }
