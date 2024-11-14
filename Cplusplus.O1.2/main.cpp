@@ -6,8 +6,16 @@ using namespace std;
 
 int main()
 {
-    // Del 1
     int start, end;
+
+    int alpha{0}, digit{0}, space{0};
+    string line;
+    char c;
+
+    string text, tmp, shortest, longest;
+    int wordCount{0}, charCount{0};
+
+    // Del 1
 
     cout << "Del 1: Temperaturtabell" << endl;
     do
@@ -30,7 +38,7 @@ int main()
 
     cout << "Celsius   Kelvin   Fahrenheit   Reaumur" << endl;
     cout << "---------------------------------------" << endl;
-    for (int i = 0; i < end - start + 1; i++)
+    for (int i{0}; i < end - start + 1; i++)
     {
         cout << setw(7) << start + i;
         cout << setw(9) << fixed << setprecision(2) << static_cast<float>(start + i) + 273.15f;
@@ -43,13 +51,9 @@ int main()
 
     // Del 2
 
-    int alpha{0}, digit{0}, space{0};
-    string line;
-    char c;
-
     cout << "Del 2: Teckenhantering" << endl;
 
-    for (int i = 0; i < 10; i++)
+    for (int i{0}; i < 10; i++)
     {
         cin.get(c);
         if (isalpha(c))
@@ -69,15 +73,11 @@ int main()
 
     // Del 3
 
-    string text, tmp, shortest, longest;
-    int wordCount{0}, charCount{0};
-
     cout << "Del 3: Ordhantering" << endl;
     cout << "Mata in en text:" << endl;
 
-    while (!cin.eof())
+    while (cin.get(c))
     {
-        cin.get(c);
         if (isspace(c))
         {
             if (tmp == "")
@@ -120,4 +120,6 @@ int main()
     }
     else
         cout << "Inga ord matades in." << endl;
+
+    return 0;
 }
