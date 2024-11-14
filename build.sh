@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 rm build/$1/$2
 
@@ -22,7 +22,15 @@ then
     if [ $4 -eq 0 ]
     then
         cd build/$1
-        g++ -Wall -Wextra -pedantic ../../$1/$2$3
+        files=""
+        for file in ../../$1/*
+        do
+            if [ "${file: -1}" != "h" ]
+            then
+                files+=" ${file}"
+            fi
+        done
+        g++ -Wall -Wextra -pedantic $files
         ./a.out
     elif [ $4 -eq 1 ]
     then
