@@ -1,6 +1,10 @@
+// joewe275: Samarbetat med matol699, Mattis Olevall, samma program
+
 #include <string>
 #include <iostream>
 #include <iomanip>
+#include <limits>
+#include <cmath>
 
 static void clear_input()
 {
@@ -9,9 +13,9 @@ static void clear_input()
 
 static int op_factorial(const int n)
 {
-    int result = 1;
+    int result {1};
 
-    for (int i = 1; i <= n; i++)
+    for (int i {1}; i <= n; i++)
         result *= i;
 
     return result;
@@ -31,7 +35,7 @@ static std::string op_multiply_string(const std::string &text, const int multipl
 {
     std::string result;
 
-    for (int i = 0; i < multiplier; i++)
+    for (int i {0}; i < multiplier; i++)
         result += text;
 
     return result;
@@ -50,8 +54,8 @@ static void subprogram_multiply_string()
 
 static void op_switch_places(int &a, float &b)
 {
-    const int tmp = a;
-    a = static_cast<int>(std::ceilf(b));
+    const int tmp {a};
+    a = static_cast<int>(std::ceil(b));
     b = static_cast<float>(tmp);
 }
 
@@ -151,7 +155,7 @@ int main()
 
     for (;;)
     {
-        const Subprogram subprogram = menu();
+        const Subprogram subprogram = {menu()};
 
         if (subprogram == EXIT)
         {
