@@ -8,7 +8,7 @@ using namespace std;
 
 using Runner_Vec = vector<Runner_Type>;
 
-void print_runners(const Runner_Vec &runners)
+void print_runners(Runner_Vec const &runners)
 {
     cout << "Efternamn   Förnamn           Klubb: Tider" << endl;
     cout << "==========================================" << endl;
