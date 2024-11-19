@@ -92,16 +92,13 @@ static void subprogram_calculate_length()
         << "Medellängd: " << std::fixed << std::setprecision(1) << average_length << std::endl;
 }
 
-enum Subprogram
-{
-    FACTORIAL,
-    MULTIPLY_STRING,
-    SWITCH_PLACES,
-    CALCULATE_LENGTH,
-    EXIT
-};
+const int FACTORIAL = 1;
+const int MULTIPLY_STRING = 2;
+const int SWITCH_PLACES = 3;
+const int CALCULATE_LENGTH = 4;
+const int EXIT = 5;
 
-static void dispatch(const Subprogram subprogram)
+static void dispatch(const int subprogram)
 {
     switch (subprogram)
     {
@@ -117,12 +114,10 @@ static void dispatch(const Subprogram subprogram)
     case CALCULATE_LENGTH:
         subprogram_calculate_length();
         break;
-    case EXIT:
-        break;
     }
 }
 
-static Subprogram menu()
+static int menu()
 {
     for (;;)
     {
@@ -144,8 +139,7 @@ static Subprogram menu()
             continue;
         }
 
-        choice--;
-        return static_cast<Subprogram>(choice);
+        return choice;
     }
 }
 
@@ -155,7 +149,7 @@ int main()
 
     for (;;)
     {
-        const Subprogram subprogram = {menu()};
+        const int subprogram {menu()};
 
         if (subprogram == EXIT)
         {
