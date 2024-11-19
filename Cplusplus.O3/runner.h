@@ -10,6 +10,8 @@ struct Runner_Type
     std::vector<double> times;
 };
 
-bool operator<(Runner_Type const &left, Runner_Type const &right);
+bool operator<(Runner_Type const &left, 
+               Runner_Type const &right);
 
-std::ostream &operator<<(std::ostream &os, Runner_Type const &runner);
+std::ostream &operator<<(std::ostream &os, 
+                         Runner_Type const &runner);
