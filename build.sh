@@ -1,6 +1,6 @@
 #!/bin/bash
 
-rm build/$1/$2
+rm -r build/$1/
 
 if [ "$3" = ".adb" ]
 then
@@ -25,7 +25,7 @@ then
         files=""
         for file in ../../$1/*
         do
-            if [ "${file: -1}" != "h" ]
+            if [ "${file##*.}" = "cpp" ]
             then
                 files+=" ${file}"
             fi
