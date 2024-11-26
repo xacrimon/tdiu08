@@ -1,30 +1,17 @@
 -- joewe275: Arbetat enskilt
 
 with Ada.Text_IO;           use Ada.Text_IO;
-with Ada.Float_Text_IO;     use Ada.Float_Text_IO;
 
 procedure Data_Handling is
-    type Innermost_Top is record
-        S : Float;
-        U : Character;
-    end record;
+    type Set is
+        array (-78 .. -76) of String (1 .. 3);
 
-    type Top_Negative_Index_Array is
-        array (-53 .. -52) of Innermost_Top;
+    type Matrix is
+        array (Boolean, Boolean) of Set;
 
-    type Top_Char_Map is
-        array (Character range '5' .. '6') of Top_Negative_Index_Array;
-
-    type Bottom is
-        array (Character range 'M' .. 'O', 71 .. 73) of Float;
-
-    type Outer is record
-        H : Top_Char_Map;
-        D : Bottom;
-    end record;
-
-    type Wrapper is record
-        T : Outer;
+    type Data is record
+        V : Matrix;
+        N : Matrix;
     end record;
 
     procedure Eat_Sep is
@@ -38,121 +25,75 @@ procedure Data_Handling is
         Put (" ");
     end Write_Sep;
 
-    procedure Get (Data : out Innermost_Top) is
+    procedure Get (Item : out Set) is
     begin
-        Get (Data.S);
-        Eat_Sep;
-        Get (Data.U);
-    end Get;
+        for I in Item'Range loop
+            Get (Item (I));
 
-    procedure Put (Data : in Innermost_Top) is
-    begin
-        Put (Data.S, Fore => 0, Aft => 1, Exp => 0);
-        Write_Sep;
-        Put (Data.U);
-    end Put;
-
-    procedure Get (Data : out Top_Negative_Index_Array) is
-    begin
-        for I in Data'Range loop
-            Get (Data (I));
-
-            if I /= Data'Last then
+            if I /= Item'Last then
                 Eat_Sep;
             end if;
         end loop;
     end Get;
 
-    procedure Put (Data : in Top_Negative_Index_Array) is
+    procedure Put (Item : in Set) is
     begin
-        for I in reverse Data'Range loop
-            Put (Data (I));
+        for I in reverse Item'Range loop
+            Put (Item (I));
 
-            if I /= Data'First then
+            if I /= Item'First then
                 Write_Sep;
             end if;
         end loop;
     end Put;
 
-    procedure Get (Data : out Top_Char_Map) is
+    procedure Get (Item : out Matrix) is
     begin
-        for I in Data'Range loop
-            Get (Data (I));
+        for I in Item'Range (1) loop
+            for J in Item'Range (2) loop
+                Get (Item (I, J));
 
-            if I /= Data'Last then
-                Eat_Sep;
-            end if;
-        end loop;
-    end Get;
-
-    procedure Put (Data : in Top_Char_Map) is
-    begin
-        for I in Data'Range loop
-            Put (Data (I));
-
-            if I /= Data'Last then
-                Write_Sep;
-            end if;
-        end loop;
-    end Put;
-
-    procedure Get (Data : out Bottom) is
-    begin
-        for I in Data'Range (1) loop
-            for J in reverse Data'Range (2) loop
-                Get (Data (I, J));
-
-                if I /= Data'Last (1) or J /= Data'First (2) then
+                if I /= Item'Last (1) or J /= Item'Last (2) then
                     Eat_Sep;
                 end if;
             end loop;
         end loop;
     end Get;
 
-    procedure Put (Data : in Bottom) is
+    procedure Put (Item : in Matrix) is
     begin
-        for I in reverse Data'Range (1) loop
-            for J in Data'Range (2) loop
-                Put (Data (I, J), Fore => 0, Aft => 2, Exp => 0);
+        for I in reverse Item'Range (1) loop
+            for J in reverse Item'Range (2) loop
+                Put (Item (I, J));
 
-                if I /= Data'First (1) or J /= Data'Last (2) then
+                if I /= Item'First (1) or J /= Item'First (2) then
                     Write_Sep;
                 end if;
             end loop;
         end loop;
     end Put;
 
-    procedure Get (Data : out Outer) is
+    procedure Get (Item : out Data) is
     begin
-        Get (Data.H);
+        Get (Item.V);
         Eat_Sep;
-        Get (Data.D);
+        Get (Item.N);
     end Get;
 
-    procedure Put (Data : in Outer) is
+    procedure Put (Item : in Data) is
     begin
-        Put (Data.H);
+        Put (Item.V);
         Write_Sep;
-        Put (Data.D);
+        Put (Item.N);
     end Put;
 
-    procedure Get (Data : out Wrapper) is
-    begin
-        Get (Data.T);
-    end Get;
-
-    procedure Put (Data : in Wrapper) is
-    begin
-        Put (Data.T);
-    end Put;
-
-    Data : Wrapper;
+    T : Data;
 begin
     Put ("Mata in datamängd: ");
-    Get (Data);
+    Get (T);
     Skip_Line;
     
     Put ("Inmatad datamängd: ");
-    Put (Data);
+    Put (T);
     New_Line;
 end Data_Handling;
