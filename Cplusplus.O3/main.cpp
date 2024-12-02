@@ -12,8 +12,10 @@ void print_runners(Runner_Vec const &runners)
 {
     cout << "Efternamn   Förnamn           Klubb: Tider" << endl;
     cout << "==========================================" << endl;
-    for (const Runner_Type &runner : runners)
-        cout << runner << endl;
+    for (int i = 0; i < runners.size(); ++i)
+    {
+        cout << runners[i] << endl;
+    }
 }
 
 Runner_Vec get_runners()
@@ -25,22 +27,25 @@ Runner_Vec get_runners()
         Runner_Type runner;
         cin >> runner.first_name;
         if (runner.first_name == "KLAR")
+        {
             break;
+        }
         cin >> runner.last_name;
         getline(cin, runner.club);
         runners.push_back(runner);
     }
 
     cin.ignore(1000, '\n');
-
     return runners;
 }
 
 void get_times(Runner_Vec &runners)
 {
-    for (Runner_Type &runner : runners)
+    for (int i = 0; i < runners.size(); ++i)
     {
+        Runner_Type &runner{runners[i]};
         double time{};
+
         cout << "Tider " << runner.first_name << ": ";
         while (time != -1.0)
         {
@@ -57,12 +62,8 @@ void get_times(Runner_Vec &runners)
 int main()
 {
     Runner_Vec runners{get_runners()};
-
     get_times(runners);
-
     sort(begin(runners), end(runners));
-
     print_runners(runners);
-
     return 0;
 }
