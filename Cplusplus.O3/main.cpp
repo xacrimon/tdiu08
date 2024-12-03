@@ -12,7 +12,7 @@ void print_runners(Runner_Vec const &runners)
 {
     cout << "Efternamn   Förnamn           Klubb: Tider" << endl;
     cout << "==========================================" << endl;
-    for (int i = 0; i < runners.size(); ++i)
+    for (int i{0}; i < runners.size(); ++i)
     {
         cout << runners[i] << endl;
     }
@@ -41,7 +41,7 @@ Runner_Vec get_runners()
 
 void get_times(Runner_Vec &runners)
 {
-    for (int i = 0; i < runners.size(); ++i)
+    for (int i{0}; i < runners.size(); ++i)
     {
         Runner_Type &runner{runners[i]};
         double time{};
