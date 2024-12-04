@@ -1,5 +1,7 @@
 #include "hero_handling.h"
 
+#include <algorithm>
+
 bool operator<(Hero_Type const &left,
                Hero_Type const &right)
 {
@@ -40,6 +42,7 @@ std::istream &operator>>(std::istream &is, Hero_Type &hero)
     {
         hero.interests.push_back(interest);
     }
+    std::sort(std::begin(hero.interests), std::end(hero.interests));
 
     return is;
 }

@@ -6,15 +6,16 @@
 void add_hero_program(Register_Type &reg)
 {
     std::string line;
-    Hero_Type hero;
 
     while (true)
     {
+        Hero_Type hero;
         std::istringstream iss;
         std::cout << "Enter hero information:" << std::endl;
         std::getline(std::cin, line);
         iss.str(line);
         iss >> hero;
+
         if (is_in_reg(reg, hero))
         {
             std::cout << "Hero already in register. ";
@@ -44,7 +45,9 @@ void match_program(Register_Type &reg)
     std::getline(std::cin, line);
     iss.str(line);
     while (iss >> interest)
+    {
         interests.push_back(interest);
+    }
 
     matches = match(reg, interests);
 
@@ -54,13 +57,10 @@ void match_program(Register_Type &reg)
     std::cout << matches;
 }
 
-int menu()
+bool dispatch(Register_Type &heroes,
+              std::string &file)
 {
     int selection{};
-
-    std::cout << "1) Add new hero to register file" << std::endl;
-    std::cout << "2) Find matching heroes" << std::endl;
-    std::cout << "3) Quit" << std::endl;
 
     do
     {
@@ -69,6 +69,20 @@ int menu()
     } while (selection < 1 || selection > 3);
 
     std::cin.ignore(1000, '\n');
+
+    switch (selection)
+    {
+    case 1:
+        add_hero_program(heroes);
+        save_file(heroes, file);
+        std::cout << "The hero was added to the register on file " << file << std::endl;
+        return true;
+    case 2:
+        match_program(heroes);
+        return true;
+    case 3:
+        return false;
+    }
 
     return selection;
 }
@@ -82,28 +96,22 @@ int main(int argc, char *argv[])
     {
         std::cout << "Incorrect number of arguments!" << std::endl;
         std::cout << "Usage: " << argv[0] << " REGISTERFILE" << std::endl;
+
+        return 0;
     }
 
     file = argv[1];
     load_file(heroes, file);
 
     std::cout << "Welcome to Hero Matchmaker 3000!" << std::endl;
-    while (true)
+    do
     {
-        switch (menu())
-        {
-        case 1:
-            add_hero_program(heroes);
-            save_file(heroes, file);
-            std::cout << "The hero was added to the register on file " << file << std::endl;
-            break;
-        case 2:
-            match_program(heroes);
-            break;
-        case 3:
-            return false;
-        }
-    }
+        std::cout << "1) Add new hero to register file" << std::endl;
+        std::cout << "2) Find matching heroes" << std::endl;
+        std::cout << "3) Quit program" << std::endl;
+    } while (dispatch(heroes, file));
+
+    std::cout << "Terminating Hero Matchmaker 3000!" << std::endl;
 
     return 0;
 }
