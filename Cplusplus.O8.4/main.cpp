@@ -1,4 +1,5 @@
 #include <iostream>
+#include <sstream>
 #include <string>
 
 #include "register_handling.h"
@@ -27,7 +28,7 @@ void add_hero_program(Register_Type &reg)
     }
 }
 
-void match_program(Register_Type &reg)
+void match_program(Register_Type const &reg)
 {
     int interest;
     std::vector<int> interests;
@@ -58,9 +59,9 @@ void match_program(Register_Type &reg)
 }
 
 bool dispatch(Register_Type &heroes,
-              std::string &file)
+              std::string const &file)
 {
-    int selection{};
+    int selection;
 
     do
     {
@@ -112,6 +113,5 @@ int main(int argc, char *argv[])
     } while (dispatch(heroes, file));
 
     std::cout << "Terminating Hero Matchmaker 3000!" << std::endl;
-
     return 0;
 }
