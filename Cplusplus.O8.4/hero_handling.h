@@ -17,5 +17,7 @@ struct Hero_Type
 bool operator<(Hero_Type const &left,
                Hero_Type const &right);
 
-std::ostream &operator<<(std::ostream &os, Hero_Type const &hero);
-std::istream &operator>>(std::istream &is, Hero_Type &hero);
+std::ostream &operator<<(std::ostream &os, 
+                         Hero_Type const &hero);
+std::istream &operator>>(std::istream &is, 
+                         Hero_Type &hero);

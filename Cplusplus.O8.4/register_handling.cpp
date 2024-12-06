@@ -4,7 +4,8 @@
 
 #include "register_handling.h"
 
-void load_file(Register_Type &reg, std::string const &file_path)
+void load_file(Register_Type &reg,
+               std::string const &file_path)
 {
     std::ifstream ifs{file_path};
     std::string line;
@@ -26,7 +27,8 @@ void load_file(Register_Type &reg, std::string const &file_path)
     ifs.close();
 }
 
-void save_file(Register_Type &reg, std::string const &file_path)
+void save_file(Register_Type const &reg,
+               std::string const &file_path)
 {
     std::ofstream ofs{file_path};
     ofs << reg;
@@ -36,13 +38,24 @@ void save_file(Register_Type &reg, std::string const &file_path)
 void add_hero(Register_Type &reg,
               Hero_Type const &hero)
 {
-    reg.insert(std::upper_bound(reg.begin(), reg.end(), hero), hero);
+    if (!is_in_reg(reg, hero))
+    {
+        reg.push_back(hero);
+        std::sort(std::begin(reg), std::end(reg));
+    }
 }
 
-bool is_in_reg(Register_Type &reg,
+bool is_in_reg(Register_Type const &reg,
                Hero_Type const &hero)
 {
-    return std::binary_search(reg.begin(), reg.end(), hero);
+    for (int i{0}; i < reg.size(); ++i)
+    {
+        if (hero.name == reg.at(i).name)
+        {
+            return true;
+        }
+    }
+    return false;
 }
 
 Register_Type match(Register_Type const &reg,

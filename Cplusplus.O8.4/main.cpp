@@ -81,11 +81,9 @@ bool dispatch(Register_Type &heroes,
     case 2:
         match_program(heroes);
         return true;
-    case 3:
+    default:
         return false;
     }
-
-    return selection;
 }
 
 int main(int argc, char *argv[])
