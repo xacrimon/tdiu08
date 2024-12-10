@@ -28,16 +28,16 @@ procedure Data_Handling is
 
     procedure Get (Item : out Pair) is
     begin
-        Get(Item.I);
+        Get (Item.I);
         Eat_Sep;
-        Get(Item.E);
+        Get (Item.E);
     end Get;
 
     procedure Put (Item : in Pair) is
     begin
-        Put(Item.I);
+        Put (Item.I);
         Write_Sep;
-        Put(Item.E, Width => 0);
+        Put (Item.E, Width => 0);
     end Put;
 
     procedure Get (Item : out Block) is
