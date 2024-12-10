@@ -42,8 +42,8 @@ procedure Data_Handling is
 
     procedure Get (Item : out Block) is
     begin
-        for I in Item'Range (1) loop
-            for J in reverse Item'Range (2) loop
+        for J in reverse Item'Range (2) loop
+            for I in Item'Range (1) loop
                 Get (Item (I,J));
 
                 if I /= Item'Last (1) or J /= Item'First (2) then
@@ -55,8 +55,8 @@ procedure Data_Handling is
 
     procedure Put (Item : in Block) is
     begin
-        for I in reverse Item'Range (1) loop
-            for J in Item'Range (2) loop
+        for J in Item'Range (2) loop
+            for I in reverse Item'Range (1) loop
                 Put (Item (I,J));
 
                 if I /= Item'First (1) or J /= Item'Last (2) then
@@ -65,22 +65,6 @@ procedure Data_Handling is
             end loop;
         end loop;
     end Put;
-
-    procedure Debug (Item : in Block) is
-    begin
-        for I in Item'Range (1) loop
-            for J in Item'Range (2) loop
-                Put ("(");
-                Put (I, Width => 0);
-                Put (", ");
-                Put (J);
-                Put ("): ");
-                Put (Item (I,J));
-
-                New_Line;
-            end loop;
-        end loop;
-    end Debug;
 
     procedure Get (Item : out Data) is
     begin
@@ -104,18 +88,6 @@ procedure Data_Handling is
         end loop;
     end Put;
 
-    procedure Debug (Item : in Data) is
-    begin
-        for I in Item'Range loop
-            Put ("block: ");
-            Put (I, Width => 0);
-            New_Line;
-            Debug (Item (I));
-
-            New_Line(2);
-        end loop;
-    end Debug;
-
     T : Data;
 begin
     Put ("Mata in datamängd: ");
@@ -123,7 +95,6 @@ begin
     Skip_Line;
     
     Put ("Inmatad datamängd: ");
-    --Put (T);
+    Put (T);
     New_Line;
-    Debug (T);
 end Data_Handling;
